@@ -1,0 +1,54 @@
+{
+  "pages": [
+    "pages/liveVideo/list/index",
+    "pages/liveVideo/allLive/index",
+    "pages/liveVideo/allTrailer/index",
+    "pages/videos/list/index",
+    "pages/videos/album/index",
+    "pages/videos/search/index",
+    "pages/liveVideo/detail/index",
+    "pages/videos/detail/index",
+    "pages/user/login/index",
+    "pages/user/terms/index",
+    "pages/user/home/index",
+    "pages/user/history/index",
+    "pages/user/myLive/index",
+    "pages/user/feedback/index",
+    "pages/user/perfect/index",
+    "pages/user/province/index",
+    "pages/user/city/index",
+    "pages/user/district/index",
+    "pages/user/hospital/index",
+    "pages/user/search/index"
+  ],
+  "tabBar": {
+    "borderStyle": "white",
+    "selectedColor": "#d22e37",
+    "backgroundColor": "#ffffff",
+    "list": [{
+        "iconPath": "images/nav_tj_zbj.png",
+        "selectedIconPath": "images/nav_tj_zbj_active.png",
+        "pagePath": "pages/videos/list/index",
+        "text": "视频"
+      },
+      {
+        "iconPath": "images/nav_class_normal.png",
+        "selectedIconPath": "images/nav_class_pressed.png",
+        "pagePath": "pages/liveVideo/list/index",
+        "text": "直播"
+      },
+      {
+        "iconPath": "images/nav_mine_normal.png",
+        "selectedIconPath": "images/nav_mine_pressed.png",
+        "pagePath": "pages/user/home/index",
+        "text": "我的"
+      }
+    ]
+  },
+  "window": {
+    "navigationBarBackgroundColor": "#D93639",
+    "navigationBarTitleText": "医生站",
+    "navigationBarTextStyle": "white",
+    "backgroundTextStyle": "light"
+  }
+}

@@ -1,0 +1,39 @@
+<view class='container'>
+  <view class='trailer_list'>
+    <view class='trailer_item' wx:for="{{trailerList}}" wx:key="studioId">
+      <navigator url="/pages/liveVideo/detail/index?studioId={{item.studioId}}&subjectId={{item.subjectId}}">
+        <view class='trailer'>
+          <view class='banner'>
+            <text class='head'>{{item.subjectTitle}}</text>
+            <view class='doctor'>
+              <image src='{{item.subjectMaster.headUrl}}' mode="aspectFill"></image>
+              <text class='name'>{{item.subjectMaster.name}}</text>
+              <text>{{item.subjectMaster.hospital}}</text>
+            </view>
+          </view>
+          <view class='img'>
+            <image src='{{item.subjectImg}}' mode="aspectFill"></image>
+          </view>
+        </view>
+        <view class='trailer_inf'>
+          <view class='trailer'>
+            <image wx:if="{{item.isHot}}" src='../../../images/hot.png'></image>
+            <text class='number'>{{item.signNum}}人预约</text>
+            <text>{{item.liveTime}}</text>
+          </view>
+          <view class='start'>
+            <text>距离开始: {{item.distanceTime}}</text>
+          </view>
+        </view>
+      </navigator>
+    </view>
+  </view>
+
+  <view class="weui-loadmore" wx:if="{{state == 'load'}}">
+    <view class="weui-loading"></view>
+    <view class="weui-loadmore__tips">正在加载</view>
+  </view>
+  <view class="weui-loadmore weui-loadmore_line" wx:elif="{{state == 'end'}}">
+    <view class="weui-loadmore__tips weui-loadmore__tips_in-line">没有更多了</view>
+  </view>
+</view>

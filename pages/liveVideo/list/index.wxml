@@ -1,0 +1,179 @@
+<view class='container'>
+  <!-- <view class='title' hidden="{{liveList.length == 0}}">
+    <text class='name'>今日直播</text>
+    <navigator class='more' url="/pages/liveVideo/allLive/index" hover-class="navigator-hover" wx:if="{{liveShow}}">
+      全部>
+    </navigator>
+  </view> -->
+
+  <view class='live_list'>
+    <view class='live_item' wx:for="{{liveList}}" wx:key="studioId" wx:for-index="xindex" wx:if="{{item.liveStatus == 1||item.liveStatus == 2}}">
+      <navigator hover-class="live_item--hover" url="/pages/liveVideo/detail/index?studioId={{item.studioId}}&subjectId={{item.subjectId}}">
+        <view class='video'>
+          <image src='{{item.subjectImg}}' mode="aspectFill"></image>
+          <text class="videoStatus">直播中</text>
+          <view class='dull'></view>
+          <text>{{item.subjectTitle}}</text>
+        </view>
+        <view class='video_inf'>
+          <!-- <view class='date'>
+            <image src='../../../images/time.png'></image>
+            <text class='time'>{{item.liveTime}}</text>
+            <text wx:if="{{item.liveStatus == 0}}" class='stata'>
+              <block wx:if="{{item.tobegin}}">即将开始</block>
+              <block wx:else>距离开始: {{item.distanceTime}}</block>
+            </text>
+            <text wx:elif="{{item.liveStatus == 1}}" class='stata'>直播中</text>
+            <text wx:elif="{{item.liveStatus == 2}}" class='stata'>直播中</text>
+            <text wx:elif="{{item.liveStatus == 9}}" class='stata'>已结束</text>
+          </view> -->
+          <view class='lecturer'>
+            <view class='head'>
+              <image src='{{item.subjectMaster.headUrl}}' mode="aspectFill"></image>
+              <view class='doctor'>
+                <text class='name'>
+                  <text class='nameStyle'>{{item.subjectMaster.name}}</text>
+                  <text class='job'>{{item.subjectMaster.title}}</text>
+                </text>
+                <text class='address'>{{item.subjectMaster.hospital}}</text>
+              </view>
+            </view>
+            <view class='interval'>
+              <image src='../../../images/line.png'></image>
+            </view>
+            <view class='people'>
+              <block wx:if="{{item.liveStatus == 0 || item.liveStatus == 1}}">
+                <text>{{item.signNum}}人已预约</text>
+                <!-- <text>已预约</text> -->
+              </block>
+              <block wx:else>
+                <text>{{item.pvNum}}人参与</text>
+                <!-- <text>参与</text> -->
+              </block>
+            </view>
+            <!-- <view class='state'>
+              <text wx:if="{{item.liveStatus == 0 && item.signup}}" class='onOrder'>已报名</text>
+              <text wx:elif="{{item.liveStatus == 0}}" class='order' data-item="{{item}}" data-index="{{xindex}}" catchtap="applyTap">报名</text>
+              <text wx:elif="{{item.liveStatus == 1 || item.liveStatus == 2}}" class='onLive'>直播中</text>
+              <text wx:elif="{{item.liveStatus == 9}}" class='see'>回看</text>
+            </view> -->
+          </view>
+        </view>
+      </navigator>
+    </view>
+    <!-- <view class="weui-loadmore weui-loadmore_line" wx:if="{{liveList.length == 0}}">
+      <view class="weui-loadmore__tips weui-loadmore__tips_in-line">无今日直播</view>
+    </view> -->
+  </view>
+  <view class='trailer_list'>
+    <view class='trailer_item' wx:for="{{liveList}}" wx:key="studioId" wx:for-index="xindex" wx:if="{{item.liveStatus != 1&&item.liveStatus != 2&&item.liveStatus != 9}}">
+      <navigator url="/pages/liveVideo/detail/index?studioId={{item.studioId}}&subjectId={{item.subjectId}}">
+        <view class="trailer_wrap">
+          <view class="trailer_image">
+            <image src='{{item.subjectMaster.headUrl}}' mode="aspectFill"></image>
+          </view>
+
+          <view class="trailer_info">
+            <text class="trailer_info_title">{{item.subjectTitle}}</text>
+            <text class="trailer_info_hospital">{{item.subjectMaster.hospital}}</text>
+            <view class="doctor_info">
+              <text class="doctor_info_name">{{item.subjectMaster.name}}</text>
+              <text class="doctor_info_title">{{item.subjectMaster.title}}</text>
+            </view>
+            <view class='trailer_inf'>
+              <view class='start'>
+                <text>距开课{{item.distanceTime}}</text>
+              </view>
+              <view class='trailer'>
+                <text class='number'>{{item.signNum}}人参与</text>
+              </view>
+              <view class="isSignUp hasSign" wx:if="{{item.liveStatus == 0 && item.signup}}">
+                <text>已报名</text>
+              </view>
+              <view class="isSignUp notSign" wx:elif="{{item.liveStatus == 0}}">
+                <text data-item="{{item}}" data-index="{{xindex}}" data-type="live" catchtap="applyTap">+ 报名</text>
+              </view>
+
+            </view>
+
+          </view>
+
+        </view>
+      </navigator>
+    </view>
+  </view>
+
+  <!-- <view class='title' hidden="{{trailerList.length == 0}}">
+    <text class='name'>近期预告</text>
+    <navigator class='more' url="/pages/liveVideo/allTrailer/index" hover-class="navigator-hover" wx:if="{{trailerShow}}">
+      全部>
+    </navigator>
+  </view> -->
+  <view class='trailer_list'>
+    <view class='trailer_item' wx:for="{{trailerList}}" wx:key="studioId" wx:for-index="xindex">
+      <navigator url="/pages/liveVideo/detail/index?studioId={{item.studioId}}&subjectId={{item.subjectId}}">
+        <view class="trailer_wrap">
+          <view class="trailer_image">
+            <image src='{{item.subjectMaster.headUrl}}' mode="aspectFill"></image>
+          </view>
+
+          <view class="trailer_info">
+            <text class="trailer_info_title">{{item.subjectTitle}}</text>
+            <text class="trailer_info_hospital">{{item.subjectMaster.hospital}}</text>
+            <view class="doctor_info">
+              <text class="doctor_info_name">{{item.subjectMaster.name}}</text>
+              <text class="doctor_info_title">{{item.subjectMaster.title}}</text>
+            </view>
+            <view class='trailer_inf'>
+              <view class='start'>
+                <!-- <text>{{item.distanceTime}}</text> -->
+                <text>{{item.liveTime}}</text>
+              </view>
+              <view class='trailer'>
+                <!-- <image wx:if="{{item.isHot}}" src='../../../images/hot.png'></image> -->
+                <text class='number'>{{item.signNum}}人参与</text>
+                <!-- <text>{{item.liveTime}}</text> -->
+              </view>
+              <view class="isSignUp hasSign" wx:if="{{item.liveStatus == 0 && item.signup}}">
+                <text>已报名</text>
+              </view>
+              <view class="isSignUp notSign" wx:elif="{{item.liveStatus == 0}}">
+                <text data-item="{{item}}" data-type="trailer" data-index="{{xindex}}" catchtap="applyTap">+ 报名</text>
+              </view>
+
+            </view>
+
+          </view>
+
+        </view>
+        <!-- -->
+        <!-- <view class='trailer'>
+          <view class='banner'>
+            <text class='head'>{{item.subjectTitle}}</text>
+            <view class='doctor'>
+              <image src='{{item.subjectMaster.headUrl}}' mode="aspectFill"></image>
+              <text class='name'>{{item.subjectMaster.name}}</text>
+              <text>{{item.subjectMaster.hospital}}</text>
+            </view>
+          </view>
+          <view class='img'>
+            <image src='{{item.subjectImg}}' mode="aspectFill"></image>
+          </view>
+        </view> -->
+        <!-- <view class='trailer_inf'>
+          <view class='trailer'>
+            <image wx:if="{{item.isHot}}" src='../../../images/hot.png'></image>
+            <text class='number'>{{item.signNum}}人预约</text>
+            <text>{{item.liveTime}}</text>
+          </view>
+          <view class='start'>
+            <text>距离开始: {{item.distanceTime}}</text>
+          </view>
+        </view> -->
+      </navigator>
+    </view>
+    <!-- <view class="weui-loadmore weui-loadmore_line" wx:if="{{trailerList.length == 0}}">
+      <view class="weui-loadmore__tips weui-loadmore__tips_in-line">无近期预告</view>
+    </view> -->
+  </view>
+</view>

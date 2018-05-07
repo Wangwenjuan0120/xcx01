@@ -1,0 +1,135 @@
+.weui-search-bar {
+  background: #fff;
+}
+
+.noData {
+  text-align: center;
+  padding: 60rpx 0;
+}
+
+.search-content {
+  background: #fff;
+  padding: 20rpx;
+  font-size: 24rpx;
+}
+
+.search-content .name {
+  font-size: 28rpx;
+  line-height: 40rpx;
+  color: #888888;
+}
+
+.search-content .hot .list {
+  padding: 30rpx 0 10rpx;
+  max-height: 185rpx;
+  overflow: hidden;
+  margin-bottom: 15rpx;
+}
+
+.hot .list text {
+  height: 44rpx;
+  line-height: 44rpx;
+  border: 1px solid #888;
+  color:#999;
+  display: inline-block;
+  border-radius: 22rpx;
+  padding: 0rpx 15rpx;
+  margin-bottom: 20rpx;
+  margin-right: 20rpx;
+}
+
+
+.history .list .item {
+  height: 100rpx;
+  line-height: 100rpx;
+  font-size: 28rpx;
+  position: relative;
+  margin: 0 30rpx;
+  border-bottom: 1rpx solid #efefef; 
+  padding-left: 50rpx;
+  color: #525252;
+}
+
+.history .list .empty {
+  font-size: 26rpx;
+  text-align: center;
+  line-height: 100rpx;
+  color:#999;    
+}
+
+.history .item .time {
+  position: absolute;
+  left: 0rpx;
+  top: 3rpx;
+}
+
+.history .item .time image {
+  width: 26rpx;
+  height: 27rpx;
+}
+
+.history .item .remove {
+  position: absolute;
+  right: 0rpx;
+  top: 5rpx;
+}
+
+.history .item .remove image {
+  width: 34rpx;
+  height: 33rpx;
+}
+
+
+
+.trailer_list .trailer_item {
+  background: #fff;
+  padding: 20rpx;
+  overflow: hidden;
+  border-bottom:1rpx solid #EEEEEE;
+}
+
+.trailer_list .trailer_item .red{
+  color: #D0021B;
+}
+
+.trailer_item .trailer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.trailer .banner {
+  width: 530rpx;
+}
+
+.trailer .banner .head {
+  line-height: 40rpx;
+  height: 80rpx;
+  display: block;
+  font-size: 28rpx;
+  color:#000000;
+  overflow:hidden; 
+}
+
+.trailer .banner .content {
+  line-height: 40rpx;
+  height: 40rpx;
+  color: #888888;
+  width: 500rpx;
+  font-size: 24rpx;
+  
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow:hidden; 
+}
+
+.trailer .img {
+  width: 160rpx;
+  height: 120rpx;
+  border-radius: 10rpx;
+  overflow: hidden;
+}
+
+.trailer .img image {
+  width: 160rpx;
+  height: 120rpx;
+}

@@ -1,0 +1,116 @@
+<view class='container'>
+  <view class='banner'>
+    <view class='banner_scroll' wx:if="{{channelState=='scroll'}}">
+      <scroll-view class='scroll-view_H channel_list' scroll-x style="width: 100%">
+        <view class='scroll-view-item_H' wx:for="{{focusChannels}}" wx:key="{{item.catid}}">
+          <block wx:if="{{item.catid==channel}}">
+            <text class='channel selected' data-item="{{item}}" bindtap="chooseChannel">{{item.catName}}</text>
+          </block>
+          <block wx:else>
+            <text class='channel' data-item="{{item}}" bindtap="chooseChannel">{{item.catName}}</text>
+          </block>
+        </view>
+        <view class='scroll-view-item_H end'>
+        </view>
+      </scroll-view>
+      <view class='right'>
+        <view class='change'></view>
+        <view class='search'>
+          <navigator url="/pages/videos/search/index">
+            <image class='' src='../../../images/search.png'></image>
+          </navigator>
+        </view>
+        <view class='link'>
+          <image class='' src='../../../images/line.png'></image>
+        </view>
+        <view class='down' bindtap="pressDown">
+          <image class='' src='../../../images/down.png'></image>
+        </view>
+      </view>
+    </view>
+    <view class='banner_allChannel' wx:else>
+      <view class='covered'></view>
+      <view class='head'>
+        全部频道
+        <view class='right'>
+          <view class='top' bindtap="pressTop">
+            <image src='../../../images/top.png'></image>
+          </view>
+        </view>
+        <view class='content'>
+          <text class='default'>推荐</text>
+          <text wx:for="{{channels}}" class="{{item.isFocus ? 'focus' : ''}}" wx:key="{{item.catid}}" data-item="{{item}}" data-index="{{index}}" bindtap="focusItem">{{item.catName}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class='video_list'>
+    <block wx:for="{{videos}}" wx:key="{{item.vdoid}}">
+      <view class='video-item video-album' wx:if="{{item.type == 3}}">
+        <navigator url="/pages/videos/album/index?vdoid={{item.vdoid}}&topUrl={{item.coverpicUrl}}&summary={{item.summary}}&title={{item.title}}">
+          <view class='video'>
+            <image class='' src='{{item.coverpicUrl}}'></image>
+            <!-- <view class='track'></view> -->
+            <view class='air'>
+              <view class='album'>专辑</view>
+            </view>
+            <view class='num'>
+              更新至{{item.num}}个视频
+            </view>
+          </view>
+          <view class='inf'>
+            <text class='name'>{{item.title}}
+            </text>
+          </view>
+        </navigator>
+      </view>
+      <view class='video-item' wx:else>
+        <navigator url="/pages/liveVideo/detail/index?studioId={{item.studioId}}&subjectId={{item.subjectId}}" wx:if="{{item.type == 10}}">
+          <view class='video'>
+            <image class='' src='{{item.coverpicUrl}}'></image>
+            <!-- <view class='track'></view> -->
+            <!-- <view class='play'>
+              <image src='../../../images/play.png'></image>
+            </view> -->
+            <!-- <view class='air'>
+              <view class='back'>回看</view>
+            </view> -->
+            <view class='look'>
+              {{item.pvNum}} 次观看
+            </view>
+          </view>
+          <view class='inf'>
+            <text class='name'>{{item.proName}}：{{item.title}}</text>
+          </view>
+        </navigator>
+        <navigator url="/pages/videos/detail/index?vdoid={{item.vdoid}}" wx:else>
+          <view class='video'>
+            <image class='' src='{{item.coverpicUrl}}'></image>
+            <!-- <view class='track'></view> -->
+            <!-- <view class='play'>
+              <image src='../../../images/play.png'></image>
+            </view> -->
+            <view class='look'>
+              {{item.pvNum}} 次观看
+            </view>
+          </view>
+          <view class='inf'>
+            <text class='name'>{{item.proName}}：{{item.title}}</text>
+          </view>
+        </navigator>
+      </view>
+    </block>
+  </view>
+
+  <view class="weui-loadmore" wx:if="{{state == 'load'}}">
+    <view class="weui-loading"></view>
+    <view class="weui-loadmore__tips">正在加载</view>
+  </view>
+  <view class="weui-loadmore weui-loadmore_line" wx:elif="{{state == 'end'}}">
+    <view class="weui-loadmore__tips weui-loadmore__tips_in-line">没有更多了</view>
+  </view>
+
+
+
+</view>

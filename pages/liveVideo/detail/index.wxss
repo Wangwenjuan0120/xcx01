@@ -1,0 +1,480 @@
+@import '/style/detail-common.wxss';
+
+.detail-container .video-content {
+  position: relative;
+}
+
+.live-mask {
+  position: absolute;
+  z-index: 200;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.live-show {
+  position: absolute;
+  z-index: 205;
+  width: 60%;
+  max-width: 200px;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  text-align: center;
+  overflow: hidden;
+}
+
+.live-show__bd {
+  padding: 20rpx;
+  min-height: 80rpx;
+  font-size: 28rpx;
+  line-height: 40rpx;
+  color: #fff;
+}
+
+.live-show__bd text {
+  display: block;
+}
+
+.live-show .replay {
+  width: 40rpx;
+  height: 40rpx;
+}
+
+.live-content .control-mask {
+  background: transparent;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 149;
+}
+
+.live-content .hide-live {
+  position: absolute;
+  top: -1000rpx;
+  height: 1rpx;
+  z-index: -1;
+}
+
+.live-content .ppt-img {
+  background: #fff;
+  text-align: center;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.ppt-img image {
+  /* width: 100%; */
+  height: 420rpx; 
+  z-index: 99;
+}
+
+.live-content .ppt-img cover-image {
+  width: 750rpx;
+  height: 420rpx;
+}
+
+.live-content .live-control {
+  position: absolute;
+  bottom: 0;
+  z-index: 150;
+  width: 100%;
+  height: 80rpx;
+  line-height: 80rpx;
+  background: rgba(0, 0, 0, 0.3);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.live-content .live-control cover-image {
+  display: block;
+  margin: 0 40rpx;
+  width: 40rpx;
+  height: 40rpx;
+}
+
+.live-content .live-control .ppt-paging {
+  flex: 1;
+  text-align: center;
+  margin-left: 40rpx;
+  color: #fff;
+}
+
+.live-content .live-control .mute-control {
+  margin: 0;
+}
+
+.detail-content {
+  margin-bottom: 100rpx;
+}
+
+.footer-ctrl {
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  z-index: 105;
+}
+
+.footer-ctrl button {
+  border-radius: 0;
+  background: #f20b2b;
+  color: #fff;
+}
+
+.footer-ctrl button[disabled] {
+  opacity: 0.6;
+  background: #f20b2b;
+  color: #fff;
+}
+
+.footer-ctrl button:active {
+  background: #fff;
+}
+
+.footer-ctrl button:after {
+  display: none;
+}
+
+.interact-list {
+  padding: 24rpx 28rpx;
+}
+
+.author {
+  margin: 0 90rpx 22rpx 0;
+  position: relative;
+  padding-bottom: 16rpx;
+}
+
+.author:before {
+  content: " ";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  height: 1px;
+  border-top: 1px solid #ebebeb;
+  color: #ebebeb;
+  -webkit-transform-origin: 0 0;
+  transform-origin: 0 0;
+  -webkit-transform: scaleY(0.5);
+  transform: scaleY(0.5);
+}
+
+.author .author-avatar {
+  flex: 0 0 15%;
+  text-align: center;
+  margin-right: 20rpx;
+}
+
+.author.audience .author-avatar {
+  margin: 0 0 0 20rpx;
+}
+
+.author .author-avatar .avatar-frame {
+  position: relative;
+  width: 98rpx;
+  height: 98rpx;
+  line-height: 100%;
+  border-radius: 100%;
+  overflow: hidden;
+}
+
+.author .author-avatar .avatar-frame:after {
+  content: " ";
+  width: 200%;
+  height: 200%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border: 1px solid rgba(151, 151, 151, 0.3);
+  -webkit-transform: scale(0.5);
+  transform: scale(0.5);
+  -webkit-transform-origin: 0 0;
+  transform-origin: 0 0;
+  box-sizing: border-box;
+  border-radius: 100%;
+}
+
+.author .author-avatar image {
+  width: 98rpx;
+  height: 98rpx;
+}
+
+.author .author-name {
+  padding-top: 12rpx;
+  font-size: 24rpx;
+  color: #999;
+}
+
+.author .author-type {
+  padding: 0 12rpx;
+  display: inline-block;
+  font-size: 22rpx;
+  background: #d8d8d8;
+  line-height: 30rpx;
+  border-radius: 30rpx;
+  color: #fff;
+}
+
+.author .msg-item {
+  padding: 20rpx;
+  margin: 10rpx 0;
+  font-size: 24rpx;
+  background: #fff;
+  border-radius: 12rpx;
+  display: inline-block;
+  color: #353535;
+}
+
+.author .msg-item text {
+  display: inline-block;
+  word-break: break-all;
+}
+
+.author .msg-item__img {
+  border-radius: 12rpx;
+  font-size: 0;
+  overflow: hidden;
+}
+
+.author .msg-item__img image {
+  width: 100%;
+}
+
+.author .msg-item__audio {
+  padding: 20rpx;
+  margin: 10rpx 0;
+  font-size: 24rpx;
+  background: #fff;
+  border-radius: 12rpx;
+  display: inline-block;
+  color: #353535;
+}
+
+.audio-container image {
+  width: 28rpx;
+  height: 28rpx;
+  vertical-align: middle;
+}
+
+.audio-container .audio-duration {
+  font-size: 24rpx;
+  margin-left: 20rpx;
+  vertical-align: -2rpx;
+}
+
+.interact-list .msg-notice {
+  text-align: center;
+  margin: 10px 0;
+}
+
+.interact-list .msg-notice text {
+  opacity: 0.5;
+  line-height: 40rpx;
+  padding: 0 20rpx;
+  color: #fff;
+  background: #999;
+  font-size: 24rpx;
+  border-radius: 6rpx;
+  display: inline-block;
+}
+
+.author .msg-item__ask {
+  padding-bottom: 12rpx;
+  margin-bottom: 6rpx;
+  position: relative;
+  text-align: left;
+}
+
+.author .msg-item__ask:after {
+  opacity: 0.6;
+  content: " ";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  height: 1px;
+  display: block;
+  border-bottom: 1px solid #353535;
+  -webkit-transform-origin: 0 0;
+  transform-origin: 0 0;
+  -webkit-transform: scaleY(0.5);
+  transform: scaleY(0.5);
+}
+
+.author.audience .msg-item__ask:after {
+  display: none;
+}
+
+.author .msg-item__ask .question {
+  background: #f5a623;
+  border-radius: 6rpx;
+  line-height: 40rpx;
+  padding: 0 8rpx;
+  display: inline-block;
+  color: #fff;
+  margin-right: 10rpx;
+}
+
+.author.audience {
+  margin: 0 0 22rpx 90rpx;
+}
+
+.author.audience .weui-flex {
+  justify-content: flex-end;
+}
+
+.audience .ask-align {
+  text-align: right;
+}
+
+.audience .ask-align text {
+  text-align: left;
+}
+
+.interact-form {
+  padding: 18rpx 30rpx;
+  background: #f7f7fa;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 200;
+}
+
+.interact-form .send-text input {
+  padding: 6rpx 18rpx;
+  height: 60rpx;
+}
+
+.interact-form .send-text, .interact-form .check-box {
+  background: #fff;
+}
+
+.interact-form .check-box {
+  flex: 0 0 18%;
+  position: relative;
+}
+
+.interact-form .interact-label {
+  display: block;
+  font-size: 28rpx;
+}
+
+.interact-form .handle-more {
+  flex: 0 0 10%;
+  position: relative;
+}
+
+.interact-form .handle-more image {
+  width: 54rpx;
+  right: 0;
+}
+
+.interact-form .interact-label, .interact-form .handle-more image {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.interact-form .check-box icon {
+  width: 34rpx;
+  margin-right: 12rpx;
+}
+
+.interact-form .check-box text {
+  vertical-align: middle;
+}
+
+.detail-container .filter-ctrl {
+  text-align: left;
+  padding: 0 40rpx;
+}
+
+.filter-ctrl .filter-switch {
+  text-align: right;
+}
+
+.control-mask_ppt {
+}
+
+.live-control_ppt image {
+  display: block;
+  margin: 0 40rpx;
+  width: 40rpx;
+  height: 40rpx;
+}
+
+.live-control_ppt .ppt-slider {
+  flex: 1;
+}
+
+.ppt-slider-container {
+  display: flex;
+  width: 96%;
+}
+
+.ppt-slider .now {
+  color: #ddd;
+  font-size: 24rpx;
+}
+
+.ppt-slider .slider {
+  flex: 1;
+  margin-top: 22rpx;
+  z-index: 999;
+}
+
+.ppt-slider .all {
+  color: #ddd;
+  font-size: 24rpx;
+}
+
+.ppt-slider .ppt {
+  color: #fff;
+  font-size: 24rpx;
+  border: 1rpx solid #fff;
+  border-radius: 10rpx;
+  padding: 2rpx 8rpx 8rpx;
+  line-height: 34rpx;
+  height: 34rpx;
+  margin: 16rpx 0rpx 0rpx 40rpx;
+}
+
+.live-control .live-ppt-img {
+  color: #fff;
+  font-size: 24rpx;
+  border: 1rpx solid #fff;
+  border-radius: 10rpx;
+  padding: 2rpx 8rpx 8rpx;
+  line-height: 38rpx;
+  height: 34rpx;
+  margin: 0rpx 30rpx 0rpx 30rpx;
+}
+
+.ppt-image {
+  width: 100%;
+  z-index: 999;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  position: fixed;
+  background-color: #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.ppt-image image {
+  width: 100%;
+}

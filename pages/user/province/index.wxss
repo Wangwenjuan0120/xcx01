@@ -1,0 +1,14 @@
+.weui-search-bar {
+  background-color: #fff;
+}
+
+.title {
+  font-size: 28rpx;
+  height: 28rpx;
+  color: #888;
+  padding: 20rpx 30rpx;
+}
+
+.weui-cells .weui-cell__bd{
+  font-size: 34rpx;
+}

@@ -1,0 +1,19 @@
+<view wx:if="{{dialogVisible}}" class="weui-mask"></view>
+<view wx:if="{{dialogVisible}}" class="weui-dialog">
+    <view class="weui-dialog__hd">
+        <text class="weui-dialog__title">
+            <slot name="title"></slot>
+        </text>
+    </view>
+    <view class="weui-dialog__bd">
+        <slot name="content"></slot>
+    </view>
+    <view class="weui-dialog__ft">
+        <view class="weui-dialog__btn weui-dialog__btn_default">
+            <slot name="cancel"></slot>
+        </view>
+        <view class="weui-dialog__btn weui-dialog__btn_primary">
+            <slot name="ok"></slot>
+        </view>
+    </view>
+</view>

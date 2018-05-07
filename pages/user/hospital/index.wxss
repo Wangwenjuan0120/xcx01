@@ -1,0 +1,17 @@
+@import '../province/index.wxss';
+
+.title {
+  display: flex;
+  justify-content: space-between;
+}
+
+.input-hospital {
+  text-align: left;
+}
+
+.input-hospital .weui-input {
+  border: 1px solid #979797;
+  line-height: 60rpx;
+  height: 60rpx;
+  padding: 0px 10rpx;
+}

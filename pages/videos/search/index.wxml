@@ -1,0 +1,122 @@
+<view class='container'>
+  <view class="weui-search-bar">
+    <view class="weui-search-bar__form">
+      <view class="weui-search-bar__box">
+        <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
+        <input type="text" class="weui-search-bar__input" placeholder="搜索" value="{{inputVal}}"  bindinput="inputTyping" bindconfirm="inputConfirm" />
+        <view class="weui-icon-clear" wx:if="{{inputVal.length > 0}}" bindtap="clearInput">
+          <icon type="clear" size="14"></icon>
+        </view>
+      </view>
+      <label class="weui-search-bar__label" hidden="{{inputShowed}}" bindtap="showInput">
+        <icon class="weui-icon-search" type="search" size="14"></icon>
+        <view class="weui-search-bar__text">搜索</view>
+      </label>
+    </view>
+    <view class="weui-search-bar__cancel-btn" hidden="{{!inputShowed}}" bindtap="hideInput">取消</view>
+  </view>
+
+  <!-- <view class="weui-cells searchbar-result" wx:if="{{inputVal.length > 0}}">
+    <navigator url="" class="weui-cell" hover-class="weui-cell_active">
+      <view class="weui-cell__bd">
+        <view>实时搜索文本</view>
+      </view>
+    </navigator>
+    <navigator url="" class="weui-cell" hover-class="weui-cell_active">
+      <view class="weui-cell__bd">
+        <view>实时搜索文本</view>
+      </view>
+    </navigator>
+    <navigator url="" class="weui-cell" hover-class="weui-cell_active">
+      <view class="weui-cell__bd">
+        <view>实时搜索文本</view>
+      </view>
+    </navigator>
+    <navigator url="" class="weui-cell" hover-class="weui-cell_active">
+      <view class="weui-cell__bd">
+        <view>实时搜索文本</view>
+      </view>
+    </navigator>
+  </view> -->
+
+  <!-- <view class="weui-loadmore" wx:if="{{state == 'load'}}">
+    <view class="weui-loading"></view>
+    <view class="weui-loadmore__tips">正在加载</view>
+  </view> -->
+
+  <view class='search-content' wx:if="{{state == 'beign'}}">
+    <view class='hot'>
+      <text class='name'>热门搜索</text>
+      <view class='list'>
+        <text wx:for="{{hotList}}" wx:key="{{index}}" bindtap="onHotSearch" data-key="{{item}}">{{item}}</text>
+      </view>
+    </view>
+    <view class='history' wx:if="{{historyList.length > 0}}">
+      <text class='name'>搜索历史</text>
+      <view class='list'>
+        <view class='item' wx:for="{{historyList}}" wx:key="{{index}}">
+          <view class='time'>
+            <image src='../../../images/time.svg'></image>
+          </view>
+          <view bindtap='historySearch' data-key="{{item}}">{{item}}</view>
+          <view class='remove'>
+            <image src='../../../images/remove.svg' catchtap='emptyItem' data-index="{{index}}"></image>
+          </view>
+        </view>
+        <view class='empty' bindtap="emptyHistory">
+          清空搜索历史
+        </view>
+      </view>
+      <!-- <view class='noData' wx:else>
+        未有搜索历史
+      </view> -->
+    </view>
+  </view>
+
+  <view class="weui-loadmore" wx:elif="{{state == 'load'}}">
+    <view class="weui-loading"></view>
+    <view class="weui-loadmore__tips">正在搜索</view>
+  </view>
+
+  <block wx:else>
+    <view class='trailer_list' wx:if="{{videos.length > 0}}">
+      <view class='trailer_item' wx:for="{{videos}}" wx:key="vdoid">
+
+        <navigator url="/pages/liveVideo/detail/index?studioId={{item.studioId}}&subjectId={{item.subjectId}}" wx:if="{{item.type == 1}}">
+          <view class='trailer'>
+            <view class='banner'>
+              <text class='head'> 
+                <block wx:for="{{item.titleList}}" wx:key="{{index}}" wx:for-item="tit"> {{tit}} <text class='red' hidden='{{index==(item.titleList.length-1)}}'>{{inputVal}}</text></block>
+              </text>
+              <view class='content'>
+                <block wx:for="{{item.contentList}}" wx:key="{{index}}" wx:for-item="tit"> {{tit}} <text class='red' hidden='{{index==(item.contentList.length-1)}}'>{{inputVal}}</text></block>
+              </view>
+            </view>
+            <view class='img'>
+              <image src='{{item.coverpicUrl}}' mode="aspectFill"></image>
+            </view>
+          </view>
+        </navigator>
+        <navigator url="/pages/videos/detail/index?vdoid={{item.vdoid}}" wx:else>
+          <view class='trailer'>
+            <view class='banner'>
+              <text class='head'> 
+                <block wx:for="{{item.titleList}}" wx:key="{{index}}" wx:for-item="tit"> {{tit}} <text class='red' hidden='{{index==(item.titleList.length-1)}}'>{{inputVal}}</text></block>
+              </text>
+              <view class='content'>
+                <block wx:for="{{item.contentList}}" wx:key="{{index}}" wx:for-item="tit"> {{tit}} <text class='red' hidden='{{index==(item.contentList.length-1)}}'>{{inputVal}}</text></block>
+              </view>
+            </view>
+            <view class='img'>
+              <image src='{{item.coverpicUrl}}' mode="aspectFill"></image>
+            </view>
+          </view>
+        </navigator>
+
+      </view>
+    </view>
+    <view class='noData' wx:else>
+      未找到相关结果
+    </view>
+  </block>
+</view>

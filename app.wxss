@@ -1,0 +1,56 @@
+@import 'style/weui.wxss';
+
+page {
+  background-color: #fdfdfd;
+  font-size: 28rpx;
+  font-family: -apple-system-font, Helvetica Neue, Helvetica, sans-serif;
+}
+
+.prompt-middle {
+  text-align: center;
+  color: #888;
+}
+
+.prompt-middle .middle {
+  margin-top: 30%;
+}
+
+.prompt-middle .box {
+  margin-bottom: 50rpx;
+}
+
+.prompt-middle .box image {
+  width: 180rpx;
+}
+
+.prompt-middle .hot {
+  font-size: 36rpx;
+}
+
+.prompt-middle .main {
+  margin-top: 20rpx;
+  font-size: 26rpx;
+  line-height: 50rpx;
+}
+
+.weui-loadmore__tips_in-line {
+  background-color: #efeff4;
+}
+
+/*-- 样式重置 --*/
+
+button[type=primary] {
+  background: #f20b2b;
+}
+
+button[disabled][type=primary] {
+  background: #da0926;
+}
+
+button[type=primary]:hover {
+  background: #da0926;
+}
+
+.weui-search-bar__cancel-btn {
+  color: #f20b2b;
+}

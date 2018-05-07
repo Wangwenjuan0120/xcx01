@@ -1,0 +1,21 @@
+<view wx:if="{{sheetVisible}}" class="weui-mask" style="opacity: {{sheetVisible?1:0}};" bindtap="cancel"></view>
+<view wx:if="{{sheetVisible}}" class="weui-actionsheet {{sheetVisible?'weui-actionsheet_toggle':''}}">
+  <view class="weui-actionsheet__title">
+    <view wx:if="{{title}}" class="weui-actionsheet__title-text">{{title}}</view>
+    <view wx:else class="weui-actionsheet__title-text">
+      <slot name="title"></slot>
+    </view>
+  </view>
+  <view class="weui-actionsheet__menu">
+    <view wx:for="{{menuData}}" wx:key="*this" data-index="{{index}}" bindtap="itemtap" class="weui-actionsheet__cell">{{item}}</view>
+    <view wx:if="{{menuData.length===0}}" class="weui-actionsheet__cell">
+      <slot name="menu"></slot>
+    </view>
+  </view>
+  <view class="weui-actionsheet__action">
+    <view wx:if="{{cancel}}" class="weui-actionsheet__cell" bindtap="cancel">{{cancel}}</view>
+    <view wx:else class="weui-actionsheet__cell" bindtap="cancel">
+      <slot name="cancel"></slot>
+    </view>
+  </view>
+</view>

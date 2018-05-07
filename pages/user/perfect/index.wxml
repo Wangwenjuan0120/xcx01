@@ -1,0 +1,99 @@
+<view class='container'>
+
+  <view class='perfect_form'>
+    <view class="weui-cells_after-title">
+      <view class="weui-cell-set weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label  weui-cell__hd_in-select-after">姓名</view>
+        </view>
+         <view class="weui-cell__bd">
+          <input class="weui-input" value="{{info.name}}" bindinput="inputName" placeholder="请输入姓名" />
+        </view> 
+      </view>
+
+      <view class="weui-cell-set weui-cell_select">
+        <view class="weui-cell__hd weui-cell__hd_in-select-after">
+          <view class="weui-label">性别</view>
+        </view>
+        <view class="weui-cell__bd">
+          <picker bindchange="sexChange" value="{{sexIndex}}" range-key="name" range="{{sexList}}">
+            <view class="weui-select weui-select_in-select-after">{{sexList[sexIndex].name}}</view>
+          </picker>
+        </view>
+      </view>
+
+      <view class="weui-cell-set weui-cell_select">
+        <view class="weui-cell__hd weui-cell__hd_in-select-after">
+          <view class="weui-label">学历</view>
+        </view>
+        <view class="weui-cell__bd">
+          <picker bindchange="educationChange" value="{{educationIndex}}" range-key="name" range="{{educationList}}">
+            <view class="weui-select weui-select_in-select-after">{{info.education}}</view>
+          </picker>
+        </view>
+      </view>
+
+      <view class="weui-cell-set weui-cell_select">
+        <view class="weui-cell__hd weui-cell__hd_in-select-after">
+          <view class="weui-label">身份</view>
+        </view>
+        <view class="weui-cell__bd">
+          <picker bindchange="typeChange" value="{{typeIndex}}" range-key="name" range="{{typeList}}">
+            <view class="weui-select weui-select_in-select-after">{{typeList[typeIndex].name}}</view>
+          </picker>
+        </view>
+      </view>
+
+      <view class="weui-cell-set weui-cell_select" hidden='{{!(info.type==1||info.type==2)}}'>
+        <view class="weui-cell__hd weui-cell__hd_in-select-after">
+          <view class="weui-label">职称</view>
+        </view>
+        <view class="weui-cell__bd">
+          <picker bindchange="titleChange" value="{{titleIndex}}" range-key="name" range="{{titleList}}">
+            <view class="weui-select weui-select_in-select-after">{{info.title}}</view>
+          </picker>
+        </view>
+      </view>
+
+      <view class="weui-cell-set weui-cell_select" hidden='{{!(info.type==1)}}'>
+        <view class="weui-cell__hd weui-cell__hd_in-select-after">
+          <view class="weui-label">科室</view>
+        </view>
+        <view class="weui-cell__bd">
+          <picker mode="multiSelector" bindchange="departmentChange" bindcolumnchange="departmentColumnChange" value="{{departmentIndex}}" range-key="name" range="{{departmentList}}">
+            <view class="weui-select weui-select_in-select-after" wx:if="{{departmentIndex2 !== '' || !!info.department}}">
+              {{info.department}}
+            </view>
+            <view class="weui-select weui-select_in-select-after" wx:else>
+            </view>
+          </picker>
+        </view>
+      </view>
+
+      <view class="weui-cell-set weui-cell_select" hidden='{{!(info.type==5)}}'>
+        <view class="weui-cell__hd weui-cell__hd_in-select-after">
+          <view class="weui-label">专业</view>
+        </view>
+        <view class="weui-cell__bd">
+          <picker bindchange="majorChange" value="{{majorIndex}}" range-key="name" range="{{majorList}}">
+            <view class="weui-select weui-select_in-select-after">{{info.major}}</view>
+          </picker>
+        </view>
+      </view>
+
+
+      <navigator url="/pages/user/province/index" class="weui-cell-set weui-cell_access" hover-class="weui-cell_active" hidden='{{!(info.type==1 || info.type==2 || info.type==3 || info.type==4 || info.type==6)}}'>
+        <view class="weui-label">医院</view>
+        <view class="weui-cell__bd">
+          {{hospitalName}}
+        </view>
+        <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+      </navigator>
+
+    </view>
+    <view class="weui-btn-area">
+      <button class="weui-btn" type="primary" bindtap="saveInfo">确认并保存</button>
+    </view>
+  </view>
+
+</view>

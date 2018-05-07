@@ -1,0 +1,21 @@
+.perfect_form{
+  margin-top: 20rpx;
+  font-size: 30rpx;
+}
+.weui-label{
+  color: #333;
+  font-size: 30rpx;
+}
+.weui-cell-set{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1rpx solid #eee;
+}
+
+.weui-cell_access{
+  padding: 20rpx 30rpx;
+}
+button[type=primary]{
+  background: #D93639;
+}

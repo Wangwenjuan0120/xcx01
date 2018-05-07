@@ -1,0 +1,59 @@
+<view class='container'>
+  <view class='live_list'>
+    <view class='live_item' wx:for="{{liveList}}" wx:key="studioId" wx:for-index="xindex">
+      <navigator url="/pages/liveVideo/detail/index?studioId={{item.studioId}}&subjectId={{item.subjectId}}">
+        <view class='video'>
+          <image src='{{item.subjectImg}}' mode="aspectFill"></image>
+          <view class='dull'></view>
+          <text>{{item.subjectTitle}}</text>
+        </view>
+        <view class='video_inf'>
+          <view class='date'>
+            <image src='../../../images/time.png'></image>
+            <text class='time'>{{item.liveTime}}</text>
+            <text wx:if="{{item.liveStatus == 0}}" class='stata'><block wx:if="{{item.tobegin}}">即将开始</block><block wx:else>距离开始: {{item.distanceTime}}</block></text>
+            <text wx:elif="{{item.liveStatus == 1}}" class='stata'>直播中</text>
+            <text wx:elif="{{item.liveStatus == 2}}" class='stata'>直播中</text>
+            <text wx:elif="{{item.liveStatus == 9}}" class='stata'>已结束</text>
+          </view>
+          <view class='lecturer'>
+            <view class='head'>
+              <image src='{{item.subjectMaster.headUrl}}' mode="aspectFill"></image>
+              <view class='doctor'>
+                <text class='name'>{{item.subjectMaster.name}} {{item.subjectMaster.title}}</text>
+                <text class='address'>{{item.subjectMaster.hospital}}</text>
+              </view>
+            </view>
+            <view class='interval'>
+              <image src='../../../images/line.png'></image>
+            </view>
+            <view class='people'>
+              <block wx:if="{{item.liveStatus == 0 || item.liveStatus == 1}}">
+                <text>{{item.signNum}}人</text>
+                <text>已预约</text>
+              </block>
+              <block wx:else>
+                <text>{{item.pvNum}}人</text>
+                <text>参与</text>
+              </block>
+            </view>
+            <view class='state'>
+              <text wx:if="{{item.liveStatus == 0 && item.signup}}" class='onOrder'>已报名</text>
+              <text wx:elif="{{item.liveStatus == 0}}" class='order' data-item="{{item}}" data-index="{{xindex}}" catchtap="applyTap">报名</text>
+              <text wx:elif="{{item.liveStatus == 1 || item.liveStatus == 2}}" class='onLive'>直播中</text>
+              <text wx:elif="{{item.liveStatus == 9}}" class='see'>回看</text>
+            </view>
+          </view>
+        </view>
+      </navigator>
+    </view>
+  </view>
+
+  <view class="weui-loadmore" wx:if="{{state == 'load'}}">
+    <view class="weui-loading"></view>
+    <view class="weui-loadmore__tips">正在加载</view>
+  </view>
+  <view class="weui-loadmore weui-loadmore_line" wx:elif="{{state == 'end'}}">
+    <view class="weui-loadmore__tips weui-loadmore__tips_in-line">没有更多了</view>
+  </view>
+</view>

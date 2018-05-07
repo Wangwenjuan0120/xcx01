@@ -1,0 +1,7 @@
+{
+    "navigationBarTitleText": "直播详情",
+    "usingComponents": {
+        "dialog": "/pages/components/dialog/index",
+        "action-sheet": "/pages/components/actionsheet/index"
+    }
+}

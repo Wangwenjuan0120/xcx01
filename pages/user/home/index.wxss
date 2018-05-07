@@ -1,0 +1,76 @@
+.me {
+  background: #D93639;
+  display: flex;
+  justify-content: flex-start;
+  padding: 30rpx 60rpx;
+  color: #fff;
+  font-size: 26rpx;
+}
+
+.me .logo {
+  width: 80rpx;
+  height: 80rpx;
+  background: #fff;
+  border-radius: 40rpx;
+  text-align: center;
+  overflow: hidden;
+}
+
+.me .logo image {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
+}
+
+.me .login {
+  line-height: 80rpx;
+  padding-left: 20rpx;
+  font-size: 26rpx;
+}
+
+.me .userInf {
+  width: 500rpx;
+  padding-left: 20rpx;
+  font-size: 26rpx;
+}
+
+.me .userInf .inf {
+  display: flex;
+  align-items: flex-end;
+  line-height: 50rpx;
+}
+
+.me .userInf .inf .name {
+  font-size: 34rpx;
+  margin-right: 20rpx;
+}
+
+.me .userInf .hospital {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  line-height: 30rpx;
+}
+
+.hospital .modify {
+  margin-left: 10rpx;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.hospital .modify image {
+  width: 30rpx;
+}
+
+.list {
+  margin-top: 50rpx;
+}
+
+.list .weui-cell {
+  margin-bottom: 30rpx;
+  background: #fff;
+}
+
+.list .weui-cell:before {
+  border-top: none;
+}

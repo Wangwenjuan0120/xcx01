@@ -1,0 +1,126 @@
+.container {
+   /* padding-bottom: 72rpx;  */
+}
+
+.feedback-list .feedback-item {
+  margin-top: 35rpx;
+}
+
+.feedback-item .time {
+  font-size: 24rpx;
+  color: #999;
+  text-align: center;
+}
+
+.feedback-item .dialogue {
+  display: flex;
+  margin-top: 15rpx;
+}
+
+.system .dialogue {
+  justify-content: flex-start;
+}
+
+.me .dialogue {
+  justify-content: flex-end;
+  text-align: right;
+}
+
+.dialogue .header {
+  flex: 0 0 15%;
+  height: 70rpx;
+}
+
+.dialogue .header .circular {
+  border: 1px solid rgba(151, 151, 151, 0.20);
+  width: 70rpx;
+  height: 70rpx;
+  border-radius: 35rpx;
+  overflow: hidden;
+  margin: 0 auto;
+}
+
+.dialogue .header image {
+  width: 70rpx;
+  height: 70rpx;
+}
+
+.dialogue .content .name {
+  font-size: 24rpx;
+  line-height: 33rpx;
+  color: #888;
+  margin-bottom: 15rpx;
+}
+
+.dialogue .content .speak {
+  font-size: 24rpx;
+  background: #fff;
+  padding: 15rpx;
+  border-radius: 10rpx;
+  margin-top: 10rpx;
+}
+
+.system .speak {
+  margin-right: 40rpx;
+}
+
+.me .speak {
+  margin-left: 40rpx;
+  text-align: left;
+}
+
+.dialogue .content image {
+  width: 300rpx;
+}
+
+.comment-form {
+  background: #f7f7fa;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 155;
+  padding: 13rpx 0rpx;
+}
+
+.comment-form .send-text {
+  background: #fff;
+}
+
+.comment-form .send-text input {
+  padding: 6rpx 18rpx;
+  height: 60rpx;
+  border: 1px solid #b4b6ba;
+}
+
+.comment-form .send-btn {
+  flex: 0 0 13%;
+  text-align: center;
+  line-height: 72rpx;
+}
+
+.comment-form .send-btn .weui-btn {
+  font-size: 24rpx;
+  color: #f20b2b;
+}
+
+.comment-form .more-ctrl {
+  flex: 0 0 13%;
+  padding: 0;
+}
+
+.comment-form .more-ctrl .weui-cell {
+  padding: 0;
+}
+
+.comment-form .praise {
+  text-align: center;
+  line-height: 72rpx;
+}
+
+.comment-form .praise image {
+  width: 60rpx;
+  height: 60rpx;
+  display: inline-block;
+  vertical-align: middle;
+}

@@ -1,0 +1,62 @@
+<view class='container' id="j_page">
+
+  <scroll-view style="height:{{windowHeight}}rpx;" scroll-y="true" scroll-into-view="{{intoViewId}}">
+    <view class='feedback-list'>
+      <view class='feedback-item' wx:for="{{suggestion}}" wx:key="{{item.sugid}}">
+        <view class='time'>{{item.createData}}</view>
+        <view class='system' wx:if="{{item.contType == 1}}">
+          <view class='dialogue'>
+            <view class='header'>
+              <view class='circular'>
+                <image src='../../../images/Head.png' mode="aspectFit"></image>
+              </view>
+            </view>
+            <view class='content'>
+              <view class='name'>站小二</view>
+              <view class='speak' wx:if="{{item.type == 1}}">{{item.content}}</view>
+              <view class='img' wx:else>
+                <image src='{{item.content}}' mode="widthFix"></image>
+              </view>
+            </view>
+          </view>
+        </view>
+        <view class='me' wx:else>
+          <view class='dialogue'>
+            <view class='content'>
+              <view class='name'>{{nickName}}</view>
+              <view class='speak' wx:if="{{item.type == 1}}">{{item.content}}</view>
+              <view class='img' wx:else>
+                <image src='{{item.content}}' mode="widthFix"></image>
+              </view>
+            </view>
+            <view class='header'>
+              <view class='circular'>
+                <image src='{{headUrl}}' mode="aspectFit"></image>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view id="viewBottom"></view>
+    </view>
+  </scroll-view>
+
+  <view class="comment-form">
+    <view class="weui-flex">
+      <view class="more-ctrl weui-flex__item">
+        <view class="weui-cell">
+          <view class="praise weui-cell__bd" bindtap="chooseImage">
+            <image mode="widthFix" src="/images/upImg.png"></image>
+          </view>
+        </view>
+      </view>
+      <view class="send-text weui-flex__item" bindtap="sendTextFocus">
+        <input confirm-type="send" bindinput="bindKeyInput" bindconfirm="addComment" value="{{inputVal}}" cursor-spacing="9" />
+      </view>
+      <view class="send-btn weui-flex__item">
+        <text class='weui-btn' bindtap='addComment'>发送</text>
+      </view>
+    </view>
+  </view>
+
+</view>

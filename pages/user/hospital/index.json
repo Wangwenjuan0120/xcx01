@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "选择医院",
+  "usingComponents": {
+    "dialog": "/pages/components/dialog/index"
+  }
+}

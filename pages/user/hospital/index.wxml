@@ -1,0 +1,34 @@
+<view class='container'>
+  <view class='title'>
+     <view>按地区选择医院</view>
+     <view  bindtap="manuallyEnter">手动输入</view>
+  </view>
+
+  <view class="weui-panel">
+    <view class="weui-panel__bd">
+      <view class="weui-media-box weui-media-box_small-appmsg">
+        <view class="weui-cells weui-cells_in-small-appmsg">
+          <block wx:for="{{hospitals}}" wx:key="hspid">
+            <view bindtap="perfect" data-hspid="{{item.hspid}}" data-name="{{item.name}}" url="/pages/user/perfect/index?pvcid={{pvcid}}&ctyid={{ctyid}}&dstid={{dstid}}&hspid={{item.hspid}}" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+              <view class="weui-cell__bd weui-cell_primary">
+                <view>{{item.name}}</view>
+              </view>
+              <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+            </view>
+          </block>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <dialog visible="{{gradeVisible}}">
+    <text slot="title">请输入正确的医院名字</text>
+    <view slot="content">
+      <view class='input-hospital'>
+        <input class="weui-input" placeholder="医院名称" bindinput="inputhospital" cursor-spacing="100" />
+      </view>
+    </view>
+    <view slot="cancel" bindtap="cancelGrade">取消</view>
+    <view slot="ok" bindtap="submitGrade">提交</view>
+  </dialog>
+</view>

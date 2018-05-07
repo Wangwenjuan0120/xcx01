@@ -1,0 +1,31 @@
+@import '../list/index.wxss';
+
+.album_header image {
+  width: 750rpx;
+  height: 360rpx;
+  font-size: 0rpx;
+}
+
+.album_header .header {
+  width: 750rpx;
+  height: 360rpx;
+}
+
+.album_header .info {
+  background-color: #fff;
+  color: #888;
+  padding: 20rpx;
+}
+
+.info .title {
+  font-size: 24rpx;
+  line-height: 24rpx;
+}
+
+.info .summary {
+  font-size: 22rpx;
+}
+
+.video_list {
+  margin-top: 0rpx;
+}

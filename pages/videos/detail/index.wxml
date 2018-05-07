@@ -1,0 +1,206 @@
+<view class="detail-container">
+    <view class="detail-top">
+        <view class="video-content">
+            <block wx:if="{{!isLogin}}">
+                <image style="width:100%;height:420rpx;" src="{{videoInfo.coverpicUrl}}"></image>
+                <div class="video-mask" bindtap="noLoginPlay">
+                    <image class="play" src='../../../images/play.png'></image>
+                </div>
+            </block>
+            <block wx:else>
+                <view wx:if="{{videoInfo.thirdFlag===1}}">
+                    <video style="width:100%;height:420rpx;" poster="{{videoInfo.coverpicUrl}}" src="{{videoInfo.playUrl}}" controls></video>
+                </view>
+                <view wx:elif="{{videoClass.length>0 && videoInfo.thirdFlag===0}}">
+                    <video style="width:100%;height:420rpx;" poster="{{videoInfo.coverpicUrl}}" src="{{videoClass[activeVideo].newUrl}}" controls></video>
+                </view>
+                <view wx:else>
+                    <video style="width:100%;height:420rpx;" poster="{{videoInfo.coverpicUrl}}" src="{{videoInfo.newUrl}}" controls></video>
+                </view>
+            </block>
+        </view>
+        <view class="detail-tab weui-tab">
+            <view class="weui-navbar">
+                <block wx:for="{{tabs}}" wx:key="*this">
+                    <view id="{{index}}" class="weui-navbar__item {{activeIndex == index ? 'weui-bar__item_on' : ''}}" bindtap="tabTap">
+                        <view class="weui-navbar__title">{{item}}</view>
+                    </view>
+                </block>
+                <view class="weui-navbar__slider" style="left:{{sliderLeft}}px; transform: translateX({{sliderOffset}}px); -webkit-transform: translateX({{sliderOffset}}px);"></view>
+            </view>
+        </view>
+    </view>
+
+    <!-- 介绍内容 -->
+    <scroll-view scroll-y="true" bindtouchstart="tabTouchStart" bindtouchmove="tabTouchMove" bindtouchend="tabTouchEnd" class="detail-content"
+        hidden="{{activeIndex != 0}}">
+        <view class="detail-desc">
+            <view class="desc-title">{{videoInfo.title}}</view>
+            <view class="weui-flex">
+                <view class="start-date weui-flex__item">
+                    <text wx:if="{{videoInfo.startTime>0}}">{{videoInfo.videoTime}}</text>
+                </view>
+                <view class="share weui-flex__item">
+                    <button class="share-btn" plain="true" open-type="share">
+                        <image mode="widthFix" src="/images/share.svg"></image>
+                    </button>
+                </view>
+            </view>
+            <view class="jion-grade weui-flex">
+                <view class="grade weui-flex__item">
+                    <text wx:if="{{videoInfo.avg_workpoint>0}}">{{videoInfo.avg_workpoint}}分</text>
+                    <text wx:else>暂无评分</text>
+                    <view>
+                        <block wx:for="{{workpointMap}}" wx:key="*this">
+                            <image wx:if="{{item===1}}" mode="widthFix" src="/images/star-on.png"></image>
+                            <image wx:elif="{{item===0}}" mode="widthFix" src="/images/star.png"></image>
+                            <image wx:else mode="widthFix" src="/images/star-half.png"></image>
+                        </block>
+                    </view>
+                </view>
+                <view class="jion weui-flex__item">
+                    <text>{{videoInfo.duration}}\n分钟</text>
+                    <text>{{videoInfo.pvNum}}\n次参与</text>
+                </view>
+            </view>
+        </view>
+        <view class="doctor-list">
+            <view class="doctor-item">
+                <view class="weui-flex">
+                    <view class="avatar weui-flex__item">
+                        <view class="avatar-frame">
+                            <image mode="widthFix" src="{{videoInfo.proHeadurl}}"></image>
+                        </view>
+                    </view>
+                    <view class="doctor-name weui-flex__item">
+                        {{videoInfo.proName}}
+                        <text>{{videoInfo.proTitle}}\n{{videoInfo.org}}</text>
+                    </view>
+                </view>
+                <view class="doctor-desc">
+                    <text wx:if="{{!isUnfold[0] && videoInfo.subProDetail}}">{{videoInfo.subProDetail}}...</text>
+                    <text wx:else>{{videoInfo.proDetail}}</text>
+                </view>
+                <view wx:if="{{!isUnfold[0] && videoInfo.subProDetail}}" class="more" data-index="{{0}}" bindtap="unfoldTap">展开全部</view>
+            </view>
+        </view>
+        <view class="content-item">
+            <view class="item-title">简介</view>
+            <view class="item-desc">
+                <text wx:if="{{!isUnfold[1]&&videoInfo.subContent}}">{{videoInfo.subContent}}...</text>
+                <text wx:else>{{videoInfo.content}}</text>
+            </view>
+            <view wx:if="{{!isUnfold[1]&&videoInfo.subContent}}" class="more" data-index="{{1}}" bindtap="unfoldTap">展开全部</view>
+        </view>
+        <view wx:if="{{videoClass.length>0}}" class="content-item">
+            <view class="item-title">目录</view>
+            <view class="item-desc">
+                <view wx:for="{{videoClass}}" class="class-item {{activeVideo == index ? 'class-item__on' : ''}}" bindtap="classItemTap"
+                    data-index="{{index}}" wx:key="*this">{{index+1}}.{{item.title}}</view>
+            </view>
+        </view>
+        <view wx:if="{{aboutVideoList.length>0}}" class="content-item">
+            <view class="item-title">相关视频</view>
+            <scroll-view class="correlation-list" scroll-x="true" style="width: 100%">
+                <view class="weui-flex">
+                    <view wx:for="{{aboutVideoList}}" wx:key="*this" class="weui-flex__item video-item-box">
+                        <navigator url="/pages/videos/detail/index?vdoid={{item.vdoid}}">
+                            <view class="video-item">
+                                <view class="video-item__title">{{item.title}}</view>
+                                <view class="video-item__shade"></view>
+                                <image mode="aspectFill" src="{{item.coverpicUrl}}"></image>
+                            </view>
+                        </navigator>
+                    </view>
+                </view>
+            </scroll-view>
+        </view>
+    </scroll-view>
+    <!-- 互动内容 -->
+    <scroll-view scroll-y="true" bindtouchstart="tabTouchStart" bindtouchmove="tabTouchMove" bindtouchend="tabTouchEnd" scroll-into-view="{{intoViewId}}"
+        class="detail-content" hidden="{{activeIndex != 1}}">
+        <view class="comment-container">
+            <view class="comment-top weui-flex">
+                <view class="top-title weui-flex__item">
+                    <text>全部评论 ({{commentList.length}})</text>
+                </view>
+                <view class="top-tag weui-flex__item">
+                    <text class="{{commentQuery.order===0?'tag-item__on':''}}" data-order="{{0}}" bindtap="commentOrderTap">最新</text>
+                    <text class="line">|</text>
+                    <text class="{{commentQuery.order===2?'tag-item__on':''}}" data-order="{{2}}" bindtap="commentOrderTap">最热</text>
+                </view>
+            </view>
+            <view wx:if="{{commentList.length>0}}" class="comment-list">
+                <view class="observer" wx:for="{{commentList}}" wx:key="item.comment_id">
+                    <view class="weui-flex">
+                        <view class="observer-avatar weui-flex__item">
+                            <view class="avatar-frame">
+                                <image wx:if="{{item.head_url}}" mode="widthFix" src="{{item.head_url}}"></image>
+                                <image wx:else mode="widthFix" src="../../../images/me.png"></image>
+                            </view>
+                        </view>
+                        <view class="weui-flex__item">
+                            <view class="observer-name">
+                                {{item.nick_name}}
+                                <text>{{videoInfo.proTitle}}\n{{videoInfo.org}}</text>
+                                <image class="more" bindtap="reportTap" data-index="{{index}}" mode="widthFix" src="/images/mini-more.svg"></image>
+                            </view>
+                            <view class="observer-desc">
+                                <text space="true">{{item.content}}</text>
+                            </view>
+                            <view class="reply-content" wx:if="{{item.reply_user_id}}">
+                                <block>{{item.reply_nick_name}}:</block>
+                                <text>{{item.rawContent}}</text>
+                            </view>
+                            <view class="observer-ctrl">
+                                <view class="praise" bindtap="praiseCommentTap" data-index="{{index}}">
+                                    <image mode="widthFix" wx:if="{{item.isPraise}}" src="/images/praise-on.svg"></image>
+                                    <image mode="widthFix" wx:else src="/images/praise.svg"></image>
+                                    <text>{{item.praise>0?item.praise:'赞'}}</text>
+                                </view>
+                                <text class="reply" bindtap="replyItemTap" data-index="{{index}}">回复</text>
+                                <text class="date">{{item.time}}</text>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+            <view wx:else class="comment-empty">暂时没有评论</view>
+        </view>
+        <view id="viewBottom"></view>
+    </scroll-view>
+
+    <!-- 发表评论 -->
+    <view hidden="{{activeIndex != 1}}">
+        <view class="comment-form">
+            <view class="weui-flex">
+                <view class="send-text weui-flex__item" bindtap="sendTextFocus">
+                    <input confirm-type="send" bindinput="sendInputting" bindconfirm="sendComment" focus="{{sendFocus}}" value="{{commentForm.content}}"
+                        cursor-spacing="9" placeholder="{{sendPlaceholder}}" />
+                </view>
+                <view wx:if="{{sendFocus}}" class="send-btn weui-flex__item">
+                    <button type="primary" class="weui-btn" bindtap="sendComment">发送</button>
+                </view>
+                <view wx:else class="more-ctrl weui-flex__item">
+                    <view class="weui-cell">
+                        <view class="praise weui-cell__bd" bindtap="praiseVideoTap">
+                            <image mode="widthFix" wx:if="{{praiseVideo.support||praiseVideo.support===1}}" src="/images/praise-on.svg"></image>
+                            <image mode="widthFix" wx:else src="/images/praise.svg"></image>
+                            <view class="weui-badge">
+                                <text wx:if="{{videoInfo.supportNum>99}}">99+</text>
+                                <text wx:if="{{videoInfo.supportNum===0}}">赞</text>
+                                <text wx:else>{{videoInfo.supportNum}}</text>
+                            </view>
+                        </view>
+                        <view class="share weui-cell__bd">
+                            <button class="share-btn" plain="true" open-type="share">
+                                <image mode="widthFix" src="/images/share.svg"></image>
+                            </button>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view wx:if="{{sendFocus}}" bindtap="sendTextBlur" class="form-mask"></view>
+    </view>
+</view>

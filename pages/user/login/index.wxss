@@ -1,0 +1,49 @@
+.banner {
+  background: #fff;
+  height: 250rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.banner .home {
+  font-size: 44rpx;
+  font-weight: 600;
+  height: 41rpx;
+  line-height: 41rpx;
+  margin-bottom: 10rpx;
+  color: #F20B2B;
+}
+
+.banner .home image {
+  width: 58rpx;
+  height: 41rpx;
+  vertical-align: middle;
+  margin-top: -10rpx;
+}
+
+.banner text {
+  font-size: 29rpx;
+  color: #F20B2B;
+}
+
+.login-from{
+  margin-top: 20rpx;
+}
+.login-from .note{
+  font-size: 26rpx;
+  line-height: 50rpx;
+  padding-left: 30rpx;
+  color: #999999;
+}
+
+.login-from .terms{
+  margin-top: 80rpx;
+}
+.login-from .login{
+  margin: 0rpx 40rpx;
+}
+.again-btn{
+  color: #B2B2B2;
+}

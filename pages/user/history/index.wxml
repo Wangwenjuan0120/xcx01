@@ -1,0 +1,86 @@
+<view class='container'>
+  <view class='prompt-middle' wx:if="{{isOpen}}">
+    <view class='middle'>
+      <view class='hot'>没有浏览历史</view>
+      <view class='main'>
+        <view>医生站提供上千个精品医学视频</view>
+        <view>前往查看</view>
+      </view>
+    </view>
+  </view>
+
+
+  <view class='history_list'>
+
+    <view class='history_item'>
+      <view class='time'>
+        2018-1-17
+      </view>
+      <view class='main'>
+        <view class='item'>
+          <view class='name'>
+            麻痹神经皮炎
+          </view>
+          <view class='content'>
+            直播的简介直播的简介直播的简介直播的简介直播的简介直播的简介直播的简介直播的简介直播
+          </view>
+          <view class='inf'>
+            <text>青年演说家-哈哈哈</text>
+            <text>2018-1-16 22:00</text>
+          </view>
+          <view class='type'>
+            视频
+          </view>
+        </view>
+        <view class='item'>
+          <view class='name'>
+            麻痹神经皮炎
+          </view>
+          <view class='content'>
+            直播的简介直播的简介直播的简介直播的简介直播的简介直播的简介直播的简介直播的简介直播
+          </view>
+          <view class='inf'>
+            <text>青年演说家-哈哈哈</text>
+            <text>2018-1-16 22:00</text>
+          </view>
+          <view class='type'>
+            直播
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <view class='history_item'>
+      <view class='time'>
+        2018-1-17
+      </view>
+      <view class='main'>
+        <view class='item'>
+          <view class='name'>
+            麻痹神经皮炎
+          </view>
+          <view class='content'>
+            直播的简介直播的简介直播的简介直播的简介直播的简介直播的简介直播的简介直播的简介直播
+          </view>
+          <view class='inf'>
+            <text>青年演说家-哈哈哈</text>
+            <text>2018-1-16 22:00</text>
+          </view>
+        </view>
+        <view class='item'>
+          <view class='name'>
+            麻痹神经皮炎
+          </view>
+          <view class='content'>
+            直播的简介直播的简介直播的简介直播的简介直播的简介直播的简介直播的简介直播的简介直播
+          </view>
+          <view class='inf'>
+            <text>青年演说家-哈哈哈</text>
+            <text>2018-1-16 22:00</text>
+          </view>
+        </view>
+      </view>
+    </view>
+
+  </view>
+</view>

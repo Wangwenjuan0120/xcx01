@@ -1,0 +1,252 @@
+@import '/style/detail-common.wxss';
+.comment-top {
+    padding: 10rpx 32rpx 20rpx;
+}
+
+.comment-top .top-tag {
+    text-align: right;
+    font-size: 22rpx;
+    line-height: 44rpx;
+    color: #000;
+}
+
+.comment-top .top-tag .tag-item__on {
+    color: #586C94;
+}
+
+.comment-top .line {
+    display: inline-block;
+    color: #c3c3c6;
+    margin: 0 12rpx;
+}
+
+.detail-content .class-item {
+    line-height: 48rpx;
+}
+
+.detail-content .class-item.class-item__on {
+    color: #000;
+}
+
+.correlation-list .video-item-box {
+    flex-grow: 0;
+}
+
+.correlation-list .video-item {
+    width: 280rpx;
+    height: 168rpx;
+    overflow: hidden;
+    border-radius: 20rpx;
+    margin-right: 20rpx;
+    position: relative;
+}
+
+.correlation-list .video-item image {
+    width: 280rpx;
+    height: 168rpx;
+}
+
+.correlation-list .video-item .video-item__shade {
+    width: 280rpx;
+    height: 168rpx;
+    border-radius: 20rpx;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.6));
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    z-index: 4;
+}
+
+.correlation-list .video-item .video-item__title {
+    font-size: 22rpx;
+    margin: 12rpx;
+    color: #fff;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    z-index: 5;
+}
+
+.comment-list {
+    background: #fff;
+    padding: 24rpx 28rpx;
+}
+
+.observer {
+    margin-bottom: 24rpx;
+    position: relative;
+    padding-bottom: 16rpx;
+    color: #888;
+}
+
+.observer:before {
+    content: " ";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    height: 1px;
+    border-top: 1px solid #ebebeb;
+    color: #ebebeb;
+    -webkit-transform-origin: 0 0;
+    transform-origin: 0 0;
+    -webkit-transform: scaleY(0.5);
+    transform: scaleY(0.5);
+}
+
+.observer .observer-avatar {
+    flex: 0 0 18%;
+}
+
+.observer .observer-avatar .avatar-frame {
+    position: relative;
+    width: 98rpx;
+    height: 98rpx;
+    line-height: 100%;
+    border-radius: 100%;
+    overflow: hidden;
+}
+
+.observer .observer-avatar .avatar-frame:after {
+    content: " ";
+    width: 200%;
+    height: 200%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border: 1px solid #ebebeb;
+    -webkit-transform: scale(0.5);
+    transform: scale(0.5);
+    -webkit-transform-origin: 0 0;
+    transform-origin: 0 0;
+    box-sizing: border-box;
+    border-radius: 100%;
+}
+
+.observer .observer-avatar image {
+    width: 98rpx;
+}
+
+.observer .observer-name {
+    line-height: 36rpx;
+    padding-top: 12rpx;
+    position: relative;
+    color: #000;
+}
+
+.observer .observer-name .more {
+    width: 44rpx;
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 5;
+}
+
+.observer .observer-name text {
+    font-size: 20rpx;
+    color: #888;
+}
+
+.observer .observer-desc {
+    padding-top: 10rpx;
+    word-break: break-all;
+}
+
+.observer .reply-content {
+    background: #F3F3F3;
+    font-size: 30rpx;
+    padding: 20rpx 10rpx;
+    border-radius: 10rpx;
+    margin: 10rpx 0;
+}
+
+.observer-ctrl .praise {
+    display: inline-block;
+    margin-right: 44rpx;
+}
+
+.observer-ctrl .praise image {
+    width: 30rpx;
+    height: 30rpx;
+    margin-right: 12rpx;
+    vertical-align: -4rpx;
+}
+
+.observer-ctrl .date {
+    float: right;
+}
+
+.comment-container {
+    padding-bottom: 100rpx;
+}
+
+.comment-form {
+    padding: 18rpx 30rpx;
+    background: #f7f7fa;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 155;
+}
+
+.comment-form .send-text {
+    background: #fff;
+}
+
+.comment-form .send-text input {
+    padding: 6rpx 18rpx;
+    height: 60rpx;
+}
+
+.comment-form .send-btn {
+    flex: 0 0 14%;
+    margin-left: 16rpx;
+}
+
+.comment-form .send-btn .weui-btn {
+    background: #1A73C5;
+    font-size: 24rpx;
+    padding: 0;
+    display: block;
+    height: 72rpx;
+    line-height: 72rpx;
+}
+
+.comment-form .more-ctrl {
+    flex: 0 0 24%;
+    padding: 0;
+}
+
+.comment-form .more-ctrl .weui-cell {
+    padding: 0;
+    height: 72rpx;
+}
+
+.comment-form .more-ctrl .weui-cell__bd {
+    margin: 0 15rpx;
+}
+
+.comment-form .more-ctrl image {
+    width: 50rpx;
+    display: block;
+}
+
+.comment-form .praise {
+    position: relative;
+}
+
+.comment-form .praise .weui-badge {
+    position: absolute;
+    top: -.6em;
+    right: 0;
+}
+
+.comment-form .praise image {
+    width: 44rpx;
+    height: 44rpx;
+}
+
+.comment-form .more-ctrl .share-btn {
+    display: block;
+}

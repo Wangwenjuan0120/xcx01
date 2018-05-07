@@ -1,0 +1,145 @@
+{
+	"description": "项目配置文件。",
+	"setting": {
+		"urlCheck": false,
+		"es6": true,
+		"postcss": true,
+		"minified": true,
+		"newFeature": true
+	},
+	"compileType": "miniprogram",
+	"libVersion": "1.9.94",
+	"appid": "wx163bd93ee2d141da",
+	"projectname": "%E5%8C%BB%E7%94%9F%E7%AB%992",
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"game": {
+			"currentL": -1,
+			"list": []
+		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
+		"miniprogram": {
+			"current": -1,
+			"list": [
+				{
+					"id": -1,
+					"name": "直播调试",
+					"pathName": "pages/liveVideo/list/index",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "视频调试",
+					"pathName": "pages/videos/list/index",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "全部今日直播",
+					"pathName": "pages/liveVideo/allLive/index",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "全部近期预告",
+					"pathName": "pages/liveVideo/allTrailer/index",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "视频搜索",
+					"pathName": "pages/videos/search/index",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "我的",
+					"pathName": "pages/user/home/index",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "游览历史",
+					"pathName": "pages/user/history/index",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "直播间",
+					"pathName": "pages/user/myLive/index",
+					"query": ""
+				},
+				{
+					"id": 8,
+					"name": "视频详情",
+					"pathName": "pages/videos/detail/index",
+					"query": "vdoid=755"
+				},
+				{
+					"id": -1,
+					"name": "登陆",
+					"pathName": "pages/user/login/index",
+					"query": ""
+				},
+				{
+					"id": 10,
+					"name": "直播详情",
+					"pathName": "pages/liveVideo/detail/index",
+					"query": "studioId=20023538&subjectId=200161839"
+				},
+				{
+					"id": 11,
+					"name": "完善资料",
+					"pathName": "pages/user/perfect/index",
+					"query": "type=modify"
+				},
+				{
+					"id": -1,
+					"name": "用户协议和隐私条款",
+					"pathName": "pages/user/terms/index",
+					"query": ""
+				},
+				{
+					"id": 13,
+					"name": "专辑调试",
+					"pathName": "pages/videos/album/index",
+					"query": "vdoid=1041&topUrl=http://img.yishengzhan.cn/user/e414e9136cb042c6bc6a8df15053b006.jpeg&summary=sdfasf&title=测试3443234"
+				},
+				{
+					"id": -1,
+					"name": "意见反馈",
+					"pathName": "pages/user/feedback/index",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "ppt视频",
+					"pathName": "pages/liveVideo/detail/index",
+					"query": "studioId=200547&subjectId=300162061"
+				},
+				{
+					"id": -1,
+					"name": "ppt 直播调试",
+					"pathName": "pages/liveVideo/detail/index",
+					"query": "studioId=200141&subjectId=200161649"
+				},
+				{
+					"id": -1,
+					"name": "完善资料",
+					"pathName": "pages/user/perfect/index",
+					"query": ""
+				}
+			]
+		}
+	}
+}

@@ -1,0 +1,37 @@
+<view class='container'>
+  <view class='album_header'>
+      <view class='header'>
+      <image class='' src='{{album.topUrl}}' mode="aspectFill"></image>
+      </view>
+      <view class='info'>
+         <view class='title'>{{album.title}}</view>
+         <view class='summary'>{{album.summary}}</view>
+      </view>
+  </view>
+
+  <view class='video_list'>
+    <block wx:for="{{videos}}" wx:key="{{item.vdoid}}">
+      <view class='video-item'>
+         <navigator url="/pages/videos/detail/index?vdoid={{item.vdoid}}">
+            <view class='video'>
+              <image class='' src='{{item.coverpicUrl}}'></image>
+              <!-- <view class='track'></view> -->
+              <!-- <view class='play'>
+                <image src='../../../images/play.png'></image>
+              </view> -->
+              <!-- <view class='air'>
+                <view class='look' wx:if="{{item.type == 10}}">回看</view>
+              </view> -->
+              <view class='look'>
+                {{item.pvNum}} 次观看
+              </view>
+            </view>
+            <view class='inf'>
+              <text class='name'>{{item.proName}}：{{item.title}}</text>
+            </view>
+          </navigator>
+      </view>
+    </block>
+  </view>
+
+</view>

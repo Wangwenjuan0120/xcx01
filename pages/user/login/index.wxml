@@ -1,0 +1,51 @@
+<view class='container'>
+  <view class='banner'>
+    <view>
+      <view class='home'>
+        <image src='../../../images/logo.png'></image>
+        医生站
+      </view>
+      <text>每周听个好讲座</text>
+    </view>
+  </view>
+
+  <view class='login-from'>
+
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__bd">
+          <input class="weui-input" placeholder="请填写手机号" bindinput="writePhone" />
+        </view>
+      </view>
+      <view class="weui-cell weui-cell_input weui-cell_vcode">
+        <view class="weui-cell__bd">
+          <input class="weui-input" placeholder="请输入验证码" bindinput="writeVcode" />
+        </view>
+        <view class="weui-cell__ft">
+          <view class="weui-vcode-btn" wx:if="{{isVcode}}"  bindtap="getVcode">获取验证码</view>
+          <view class="weui-vcode-btn again-btn" wx:else>重新发送({{time}}s)</view>
+        </view>
+      </view>
+    </view>
+
+    <text class='note'>没有注册医生站的手机号登录后，将自动完成注册</text>
+
+    <checkbox-group  class="terms" bindchange="bindAgreeChange">
+      <label class="weui-agree" for="weuiAgree">
+        <view class="weui-agree__text">
+          <checkbox class="weui-agree__checkbox" id="weuiAgree" value="agree" checked="{{isAgree}}" />
+          <view class="weui-agree__checkbox-icon">
+            <icon class="weui-agree__checkbox-icon-check" type="success_no_circle" size="9" wx:if="{{isAgree}}"></icon>
+          </view>
+          已阅读并同意
+          <navigator url="/pages/user/terms/index" class="weui-agree__link">《用户协议和隐私条款》</navigator>
+        </view>
+      </label>
+    </checkbox-group>
+
+    <view class="login">
+      <button class="weui-btn" disabled="{{!isAgree}}" type="primary" bindtap="login">登录</button>
+    </view>
+  </view>
+
+</view>

@@ -1,0 +1,357 @@
+<view class="detail-container">
+  <view class="detail-top">
+    <view wx:if="{{!isLogin}}" class="video-content">
+      <image style="width:100%;height:420rpx;" src="{{subjectInfo.subjectImg}}"></image>
+      <div class="video-mask" bindtap="noLoginPlay">
+        <image class="play" src='../../../images/play.png'></image>
+      </div>
+    </view>
+    <view wx:else class="video-content">
+      <view class="live-content" wx:if="{{liveStatus===1&&liveCode===-2301}}">
+        <image style="width:100%;height:100%;" mode="widthFix" src="{{subjectInfo.subjectImg}}"></image>
+        <view class="live-mask"></view>
+        <view class="live-show">
+          <view class="live-show__bd">
+            <text>抱歉，讲师暂时离开</text>
+          </view>
+        </view>
+      </view>
+      <view class="live-content" wx:elif="{{liveStatus===1}}">
+
+        <block wx:if="{{subjectInfo.mPPTStatus===4}}">
+          <live-player wx:if="{{subjectInfo.livePullUrl}}" id="subjectLive" bindstatechange="liveChange" autoplay background-mute style="width:100%; height:420rpx;visibility:hidden;" src="{{subjectInfo.livePullUrl}}">
+          </live-player>
+          <view class="ppt-img">
+            <image wx:if="{{currentPPT.url}}" src="{{currentPPT.url}}" mode='aspectFit'></image>
+            <image wx:else src="{{currentPPT.firstImg}}" mode='aspectFit'></image>
+          </view>
+
+          <view class="control-mask control-mask_ppt" catchtap="liveImageAndtapLivePlay"></view>
+
+          <view wx:if="{{isLiveControl}}" class="live-control live-control_ppt">
+
+            <image wx:if="{{!isLivePlay}}" catchtap="tapPlayPause" data-play="{{true}}" src="../../../images/live-play.png"></image>
+            <image wx:else catchtap="tapPlayPause" data-play="{{false}}" src="../../../images/live-pause.png"></image>
+
+            <view class="ppt-paging">
+              {{currentPPT.page+1}}/{{currentPPT.totalPage}}
+            </view>
+
+            <image class="mute-control" wx:if="{{!isLiveMute}}" catchtap="tapMuteResume" data-mute="{{true}}" src="../../../images/resume.png"></image>
+            <image class="mute-control" wx:else catchtap="tapMuteResume" data-mute="{{false}}" src="../../../images/mute.png"></image>
+            <view class='live-ppt-img' catchtap="liveImageAndtapLivePlay">PPT</view>
+          </view>
+        </block>
+
+        <block wx:else>
+          <live-player wx:if="{{subjectInfo.livePullUrl}}" id="subjectLive" bindstatechange="liveChange" autoplay background-mute style="width:100%; height:420rpx;" src="{{subjectInfo.livePullUrl}}">
+            <cover-view class="control-mask" catchtap="tapLivePlay"></cover-view>
+
+            <cover-view wx:if="{{isLiveControl}}" class="live-control">
+
+              <cover-image wx:if="{{!isLivePlay}}" catchtap="tapPlayPause" data-play="{{true}}" src="../../../images/live-play.png"></cover-image>
+              <cover-image wx:else catchtap="tapPlayPause" data-play="{{false}}" src="../../../images/live-pause.png"></cover-image>
+
+              <cover-view class="ppt-paging">
+              </cover-view>
+
+              <cover-image class="mute-control" wx:if="{{!isLiveMute}}" catchtap="tapMuteResume" data-mute="{{true}}" src="../../../images/resume.png"></cover-image>
+              <cover-image class="mute-control" wx:else catchtap="tapMuteResume" data-mute="{{false}}" src="../../../images/mute.png"></cover-image>
+              <cover-view>
+                <cover-image wx:if="{{!isLiveFull}}" catchtap="tapRequestExitFullScreen" data-full="{{true}}" src="../../../images/full-screen.png"></cover-image>
+                <cover-image wx:else catchtap="tapRequestExitFullScreen" data-full="{{false}}" src="../../../images/exit-full-screen.png"></cover-image>
+              </cover-view>
+            </cover-view>
+          </live-player>
+        </block>
+
+      </view>
+      <view class="live-content live-content__ppt" wx:elif="{{subjectInfo.mPPTStatus===4 && subjectInfo.videoStatus===0}}">
+        <video id="subjectLookBack" style="width:1rpx; height:1rpx;visibility:hidden;" bindtimeupdate="actionVideoTime" src="{{subjectInfo.videoUrl}}" autoplay>
+        </video>
+
+        <view class="ppt-img">
+          <image wx:if="{{actionCurrent}}" data-src="{{actionCurrent.url}}" src="{{actionCurrent.url}}" catchtap="previewImage" mode="aspectFit"></image>
+          <image wx:else data-src="{{actionInfo.firstImg}}" src="{{actionInfo.firstImg}}" catchtap="previewImage" mode="aspectFit"></image>
+        </view>
+        <view class="control-mask control-mask_ppt" catchtap="previewImageAndtapLivePlay"></view>
+        <view wx:if="{{isLiveControl}}" class="live-control live-control_ppt">
+          <image wx:if="{{!isLivePlay}}" catchtap="tapPlayPause" data-play="{{true}}" src="../../../images/live-play.png"></image>
+          <image wx:else catchtap="tapPlayPause" data-play="{{false}}" src="../../../images/live-pause.png"></image>
+          <view class='ppt-slider'>
+            <view class='ppt-slider-container'>
+              <view class='now'>{{nowShowTime}}</view>
+              <slider class='slider' bindchange="slider4change" min="0" activeColor="#ddd" backgroundColor="#999999" value="{{actionTime}}" max="{{allDuration}}" bindchanging="pptSliderChang" bindchange="pptSliderChange" block-size="12" />
+              <view class='all'>{{durationShowTime}}</view>
+              <view class='ppt' catchtap="previewImageAndtapLivePlay">PPT</view>
+            </view>
+          </view>
+        </view>
+
+      </view>
+      <view class="live-content" wx:elif="{{liveStatus===9 && subjectInfo.videoStatus===0}}">
+        <video id="subjectLookBack" style="width:100%; height:420rpx;" bindtimeupdate="actionVideoTime" src="{{subjectInfo.videoUrl}}" autoplay>
+          <!-- <block wx:if="{{subjectInfo.mPPTStatus===4}}">
+            <cover-view class="ppt-img">
+              <cover-image wx:if="{{actionCurrent}}" src="{{actionCurrent.url}}"></cover-image>
+              <cover-image wx:else src="{{actionInfo.firstImg}}"></cover-image>
+            </cover-view>
+            <cover-view class="control-mask" catchtap="tapLivePlay"> </cover-view>
+            <cover-view wx:if="{{isLiveControl}}" class="live-control">
+              <cover-image wx:if="{{!isLivePlay}}" catchtap="tapPlayPause" data-play="{{true}}" src="../../../images/live-play.png"></cover-image>
+              <cover-image wx:else catchtap="tapPlayPause" data-play="{{false}}" src="../../../images/live-pause.png"></cover-image>
+              <cover-image wx:if="{{!isLiveFull}}" catchtap="tapRequestExitFullScreen" data-full="{{true}}" src="../../../images/full-screen.png"></cover-image>
+              <cover-image wx:else catchtap="tapRequestExitFullScreen" data-full="{{false}}" src="../../../images/exit-full-screen.png"></cover-image>
+            </cover-view>
+          </block> -->
+        </video>
+      </view>
+      <view class="live-content" wx:else>
+        <image style="width:100%;height:100%;" mode="widthFix" src="{{subjectInfo.subjectImg}}"></image>
+        <view class="live-mask"></view>
+        <view class="live-show">
+          <view class="live-show__bd">
+            <text wx:if="{{liveStatus===0 && surplusTime>60000}}">距离开始\n{{durationDayHour}}</text>
+            <text wx:elif="{{liveStatus===0 && surplusTime<=60000}}">即将开始</text>
+            <text wx:elif="{{liveStatus===2}}">直播问答中</text>
+            <text wx:elif="{{liveStatus===9}}">
+                            <block wx:if="{{subjectInfo.videoStatus===0}}">回看生成成功</block>
+                            <block wx:else>生成回看中</block>
+                        </text>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="detail-tab weui-tab">
+      <view class="weui-navbar">
+        <block wx:for="{{tabs}}" wx:key="*this">
+          <view id="{{index}}" class="weui-navbar__item {{activeIndex == index ? 'weui-bar__item_on' : ''}}" bindtap="tabTap">
+            <view class="weui-navbar__title">{{item}}
+              <view wx:if="{{index ===1 && isNews}}" class="weui-badge weui-badge_dot"></view>
+            </view>
+          </view>
+        </block>
+        <view class="weui-navbar__slider" style="left:{{sliderLeft}}px; transform: translateX({{sliderOffset}}px); -webkit-transform: translateX({{sliderOffset}}px);"></view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 介绍内容 -->
+  <scroll-view scroll-y="true" bindtouchstart="tabTouchStart" bindtouchmove="tabTouchMove" bindtouchend="tabTouchEnd" class="detail-content" hidden="{{activeIndex != 0}}">
+    <view class="detail-desc">
+      <view class="desc-title">{{subjectInfo.subjectTitle}}</view>
+      <view class="weui-flex">
+        <view class="start-date weui-flex__item">
+          <text v-if="subjectInfo.startTime>0">{{subjectInfo.liveTime}}</text>
+        </view>
+        <view class="share weui-flex__item">
+          <button class="share-btn" plain="true" open-type="share">
+            <image mode="widthFix" src="/images/share.svg"></image>
+          </button>
+        </view>
+      </view>
+      <view class="jion-grade weui-flex">
+        <view class="grade weui-flex__item">
+          <text wx:if="{{subjectInfo.avg_workpoint>0}}">{{subjectInfo.avg_workpoint}}分</text>
+          <text wx:else>暂无评分</text>
+          <view>
+            <block wx:for="{{workpointMap}}" wx:key="*this">
+              <image wx:if="{{item===1}}" mode="widthFix" src="/images/star-on.png"></image>
+              <image wx:elif="{{item===0}}" mode="widthFix" src="/images/star.png"></image>
+              <image wx:else mode="widthFix" src="/images/star-half.png"></image>
+            </block>
+          </view>
+        </view>
+        <view class="jion weui-flex__item">
+          <text>{{subjectInfo.pvNum}}\n次参与</text>
+        </view>
+      </view>
+    </view>
+    <view wx:if="{{subjectInfo.subjectMaster}}" class="doctor-list">
+      <view class="doctor-item">
+        <view class="weui-flex">
+          <view class="avatar weui-flex__item">
+            <view class="avatar-frame">
+              <image mode="widthFix" src="{{subjectInfo.subjectMaster.headUrl}}"></image>
+            </view>
+          </view>
+          <view class="doctor-name weui-flex__item">
+            {{subjectInfo.subjectMaster.name}}
+            <text>{{subjectInfo.subjectMaster.title}}\n{{subjectInfo.subjectMaster.hospital}}</text>
+          </view>
+        </view>
+        <view class="doctor-desc">
+          <text wx:if="{{!isUnfold[0] && subjectInfo.subjectMaster.subIntroduce}}">{{subjectInfo.subjectMaster.subIntroduce}}...</text>
+          <text wx:else>{{subjectInfo.subjectMaster.introduce}}</text>
+        </view>
+        <view wx:if="{{!isUnfold[0] && subjectInfo.subjectMaster.subIntroduce}}" class="more" data-index="{{0}}" bindtap="unfoldTap">展开全部</view>
+      </view>
+    </view>
+    <view class="content-item">
+      <view class="item-title">简介</view>
+      <view class="item-desc">
+        <text wx:if="{{!isUnfold[1] && subjectInfo.subSubjectIntr}}">{{subjectInfo.subSubjectIntr}}...</text>
+        <text wx:else>{{subjectInfo.subjectIntro}}</text>
+      </view>
+      <view wx:if="{{!isUnfold[1] && subjectInfo.subSubjectIntr}}" class="more" data-index="{{1}}" bindtap="unfoldTap">展开全部</view>
+    </view>
+    <!-- 评分 -->
+
+    <view wx:if="{{liveStatus===1 && !subjectInfo.workpoint>0}}" class="grade-btn" bindtap="showGrade">
+      <text>评分</text>
+    </view>
+  </scroll-view>
+  <view class="footer-ctrl" hidden="{{activeIndex != 0}}">
+    <button wx:if="{{liveStatus===0}}" type="primary" bindtap="applyTap" disabled="{{subjectInfo.signup}}">{{subjectInfo.signup?'已报名':'报名'}}</button>
+    <button wx:if="{{liveStatus===1 || liveStatus===9}}" bindtap="interactTap" type="primary">参与互动</button>
+  </view>
+  <!-- 互动内容 -->
+  <scroll-view id="msgScrollBox" scroll-y="true" bindscroll="messageScroll" bindtouchstart="tabTouchStart" bindtouchmove="tabTouchMove" bindtouchend="tabTouchEnd" scroll-into-view="{{intoViewId}}" class="detail-content" hidden="{{activeIndex != 1}}">
+    <view class="weui-loadmore" wx:if="{{isLoadingMore&&loadingMsg}}">
+      <view class="weui-loading"></view>
+      <view class="weui-loadmore__tips">正在加载</view>
+    </view>
+    <view wx:if="{{fuseMsgList.length>0}}" class="interact-list">
+      <block wx:for="{{fuseMsgList}}" wx:key="item.id">
+        <block wx:if="{{item.seniorTag}}">
+          <view wx:if="{{item.msgType===1||item.msgType===2||item.msgType===3}}" class="author">
+            <view class="weui-flex">
+              <view class="author-avatar weui-flex__item">
+                <view class="avatar-frame">
+                  <image wx:if="{{item.headImg}}" mode="widthFix" src="{{item.headImg}}"></image>
+                  <image wx:else mode="widthFix" src="/images/me.png"></image>
+                </view>
+                <text wx:if="{{item.userRole===1}}" class="author-type">讲师</text>
+                <text wx:if="{{item.userRole===2}}" class="author-type">嘉宾</text>
+              </view>
+              <view class="weui-flex__item">
+                <view class="author-name">{{item.name}}</view>
+                <view wx:if="{{item.msgType===1}}" class="msg-item">
+                  <block wx:if="{{item.answerFlag}}">
+                    <view class="msg-item__ask">
+                      <text class="question">问</text>
+                      <text space="true">{{item.refQuestionText}}</text>
+                    </view>
+                  </block>
+                  <text space="true">{{item.textContent}}</text>
+                </view>
+                <view wx:if="{{item.msgType===2}}" class="msg-item__img">
+                  <block wx:if="{{item.answerFlag}}">
+                    <view class="msg-item__ask">
+                      <text class="question">问</text>
+                      <text space="true">{{item.refQuestionText}}</text>
+                    </view>
+                  </block>
+                  <image mode="widthFix" src="{{item.textContent}}"></image>
+                </view>
+                <view wx:if="{{item.msgType===3}}" class="msg-item__audio">
+                  <block wx:if="{{item.answerFlag}}">
+                    <view class="msg-item__ask">
+                      <text class="question">问</text>
+                      <text space="true">{{item.refQuestionText}}</text>
+                    </view>
+                    <audio wx:if="{{item.isPlay}}" style="visibility:hidden" data-index="{{index}}" bindended="audioEnded" id="{{item.id}}" src="{{item.ansList[0].vodUrl}}"></audio>
+                    <view class="audio-container" data-index="{{index}}" bindtap="tapAudioPlayPause">
+                      <image wx:if="{{item.isPlay}}" mode="widthFix" src="../../../images/play.gif"></image>
+                      <image wx:else mode="widthFix" src="../../../images/pause.gif"></image>
+                      <text class="audio-duration">{{item.ansList[0].vodDuration}}''</text>
+                    </view>
+                  </block>
+                  <block wx:else>
+                    <audio wx:if="{{item.isPlay}}" style="visibility:hidden" data-index="{{index}}" bindended="audioEnded" id="{{item.id}}" src="{{item.vodUrl}}"></audio>
+                    <view class="audio-container" data-index="{{index}}" bindtap="tapAudioPlayPause">
+                      <image wx:if="{{item.isPlay}}" mode="widthFix" src="../../../images/play.gif"></image>
+                      <image wx:else mode="widthFix" src="../../../images/pause.gif"></image>
+                      <text class="audio-duration">{{item.vodDuration}}''</text>
+                    </view>
+                  </block>
+                </view>
+              </view>
+            </view>
+          </view>
+          <view wx:else class="msg-notice">
+            <text space="true">{{item.textContent}}</text>
+          </view>
+        </block>
+        <view wx:else class="author audience">
+          <view class="weui-flex">
+            <view class="ask-align weui-flex__item">
+              <view class="author-name">{{item.name}}</view>
+              <view wx:if="{{item.questionFlag}}" class="msg-item msg-item__ask">
+                <text class="question">问</text> {{item.textContent}}
+              </view>
+              <view wx:else class="msg-item">
+                <text>{{item.textContent}}</text>
+              </view>
+            </view>
+            <view class="author-avatar weui-flex__item">
+              <view class="avatar-frame">
+                <image wx:if="{{item.headImg}}" mode="widthFix" src="{{item.headImg}}"></image>
+                <image wx:else mode="widthFix" src="/images/me.png"></image>
+              </view>
+            </view>
+          </view>
+        </view>
+      </block>
+    </view>
+    <view wx:else class="comment-empty">暂时没有评论</view>
+    <view id="viewBottom"></view>
+  </scroll-view>
+
+
+  <!-- 发表互动 -->
+  <view class="interact-form" hidden="{{activeIndex != 1}}">
+    <view class="weui-flex">
+      <view class="send-text weui-flex__item" bindtap="tapSendText">
+        <input confirm-type="send" bindinput="sendInputting" bindconfirm="sendMessage" focus="{{sendFocus}}" value="{{sendMsgForm.content}}" cursor-spacing="9" placeholder="{{sendPlaceholder}}" />
+      </view>
+      <view wx:if="{{liveStatus!==9}}" class="check-box weui-flex__item">
+        <checkbox-group bindchange="checkboxChange">
+          <label class="interact-label">
+            <checkbox class="weui-check" value="{{sendMsgForm.questionFlag}}" checked="{{sendMsgForm.questionFlag}}" />
+            <icon type="circle" size="17" wx:if="{{!sendMsgForm.questionFlag}}"></icon>
+            <icon type="success" size="17" wx:else></icon>
+            <text>提问</text>
+          </label>
+        </checkbox-group>
+      </view>
+      <view class="handle-more weui-flex__item" bindtap="filterTap">
+        <image mode="widthFix" src="/images/more.svg"></image>
+      </view>
+    </view>
+  </view>
+  <!-- <view wx:if="{{sendFocus}}" bindtap="sendTextBlur" class="form-mask"></view> -->
+  <!-- 评分弹窗 -->
+  <dialog visible="{{gradeVisible}}">
+    <text slot="title">评分</text>
+    <view slot="content">
+      <view class="weui-flex">
+        <view wx:for="{{gradeVals}}" wx:key="*this" class="weui-flex__item grade-val__item">
+          <view class="grade-val" bindtap="gradeItemTap" data-index="{{index}}">
+            <image mode="widthFix" wx:if="{{!item}}" src="/images/star.png"></image>
+            <image mode="widthFix" wx:if="{{!!item}}" src="/images/star-on.png"></image>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view slot="cancel" bindtap="cancelGrade">取消</view>
+    <view slot="ok" bindtap="submitGrade">提交</view>
+  </dialog>
+
+  <!-- 消息过滤 -->
+  <action-sheet visible="{{filterVisible}}" title="消息设置" cancel="取消" bindhide="cancelFilter">
+    <view slot="menu">
+      <view class="weui-flex filter-ctrl">
+        <view class="weui-flex__item">只看讲师</view>
+        <view class="weui-flex__item filter-switch">
+          <switch bindchange="filterChange"></switch>
+        </view>
+      </view>
+    </view>
+  </action-sheet>
+
+  <!-- 图片查看详情 -->
+  <view class='ppt-image' wx:if="{{currentImg}}" bindtap="currentImgHide">
+    <image mode="widthFix" src="{{currentImg}}"></image>
+  </view>
+</view>

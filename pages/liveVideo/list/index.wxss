@@ -1,0 +1,395 @@
+.container {
+  /* padding: 20rpx; */
+}
+
+.title {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding-top: 20rpx;
+  padding-bottom: 20rpx;
+}
+
+.title .name {
+  font-size: 32rpx;
+}
+
+.title .more {
+  font-size: 24rpx;
+  color: #999;
+}
+
+.live_list .live_item {
+  background: #fff;
+  margin-bottom: 10rpx;
+  /* border-bottom-left-radius: 10rpx;
+  border-bottom-right-radius: 10rpx; */
+  overflow: hidden;
+  /* box-shadow: 0px 2rpx 6rpx #999; */
+}
+
+.live_item .video {
+  position: relative;
+  height: 280rpx;
+  overflow: hidden;
+}
+
+.live_item .video .dull {
+  width: 750rpx;
+  height: 100rpx;
+  position: absolute;
+  bottom: 0rpx;
+  background-image: linear-gradient(-180deg, rgba(0, 0, 0, 0.00) 1%, rgba(0, 0, 0, 0.10) 30%, rgba(0, 0, 0, 0.25) 60%, rgba(0, 0, 0, 0.40) 99%);
+}
+
+.live_item .video .videoStatus {
+  position: absolute;
+  bottom: 80rpx;
+  width: 80rpx;
+  height: 32rpx;
+  padding: 5rpx;
+  font-size: 22rpx;
+  text-align: center;
+  background-color: #D93639;
+  color: #fff;
+  border-radius: 6rpx;
+  line-height: 32rpx;
+}
+
+.live_item .video image {
+  width: 750rpx;
+  height: 280rpx;
+}
+
+.live_item .video text {
+  position: absolute;
+  bottom: 6rpx;
+  left: 2%;
+  width: 96%;
+  font-size: 30rpx;
+  line-height: 70rpx;
+  max-height: 80rpx;
+  color: #fff;
+  overflow: hidden;
+}
+
+.live_item .date {
+  line-height: 60rpx;
+  height: 60rpx;
+  border-bottom: 1px solid #f6f6f6;
+  margin: 0 10rpx;
+  font-size: 22rpx;
+  color: #999;
+  position: relative;
+}
+
+.live_item .date image {
+  width: 30rpx;
+  height: 30rpx;
+  position: absolute;
+  left: 10rpx;
+  top: 15rpx;
+}
+
+.live_item .date .time {
+  margin-left: 63rpx;
+}
+
+.live_item .date .stata {
+  margin-left: 23rpx;
+}
+
+.live_item .lecturer {
+  display: flex;
+  justify-content: space-between;
+  height: 102rpx;
+  padding: 20rpx;
+}
+
+.live_item--hover {
+  background-color: rgba(0, 0, 0, 0.1);
+  opacity: 0.7;
+}
+
+.live_item--hover .date {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+  opacity: 0.7;
+}
+
+.lecturer .interval {
+  width: 2rpx;
+}
+
+.lecturer .interval image {
+  width: 2rpx;
+  height: 42rpx;
+  margin-top: 34rpx;
+}
+
+.lecturer .head {
+  width: 420rpx;
+  display: flex;
+  justify-content: space-between;
+}
+
+.lecturer .head image {
+  width: 82rpx;
+  height: 82rpx;
+  border: 1px solid #f6f6f6;
+  border-radius: 50rpx;
+  overflow: hidden;
+}
+
+.lecturer .head .doctor {
+  width: 300rpx;
+  height: 90rpx;
+  margin-top: 6rpx;
+}
+
+.lecturer .head .doctor text {
+  text-align: left;
+  display: block;
+  font-size: 26rpx;
+  color: #666666;
+}
+
+.head .doctor .name {
+  font-size: 26rpx;
+  line-height: 55rpx;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  color: #333;
+  display: inline-block;
+}
+
+.head .doctor .name .nameStyle {
+  display: inline;
+  color: #333;
+}
+
+.head .doctor .name .job {
+  color: #666666;
+  display: inline;
+  margin-left: 20rpx;
+}
+
+.head .doctor .address {
+  font-size: 22rpx;
+  line-height: 35rpx;
+  color: #999;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  font-weight: lighter;
+}
+
+.lecturer .people {
+  line-height: 102rpx;
+  height: 102rpx;
+  /* margin-top: 20rpx; */
+  text-align: center;
+  width: 160rpx;
+  font-size: 26rpx;
+  color: #999;
+}
+
+.lecturer .people text {
+  display: block;
+}
+
+.lecturer .state {
+  width: 100rpx;
+  text-align: center;
+}
+
+.lecturer .state text {
+  font-size: 30rpx;
+  line-height: 100rpx;
+  color: #f20b2b;
+}
+
+.lecturer .state .onOrder {
+  color: #f20b2b;
+  opacity: 0.5;
+}
+
+.trailer_list {
+  padding-left: 20rpx;
+  background-color: #fff;
+}
+
+.trailer_list .trailer_item {
+  background: #fff;
+  padding: 24rpx 20rpx 24rpx 0;
+  /* margin-bottom: 20rpx; */
+  /* border-radius: 10rpx; */
+  overflow: hidden;
+  /* box-shadow: 0px 2rpx 6rpx #999; */
+  border-bottom: 1rpx solid #E2E2E2;
+}
+
+.trailer_item .trailer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.trailer .banner {
+  width: 500rpx;
+}
+
+.trailer .banner .head {
+  line-height: 40rpx;
+  height: 80rpx;
+  display: block;
+  font-size: 28rpx;
+}
+
+.trailer .banner .doctor {
+  line-height: 40rpx;
+  height: 40rpx;
+  position: relative;
+  margin-top: 10rpx;
+  color: #999;
+  width: 480rpx;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.trailer .banner .doctor image {
+  width: 40rpx;
+  height: 40rpx;
+  border-radius: 20rpx;
+  position: absolute;
+  left: 0rpx;
+  top: 0rpx;
+}
+
+.trailer .banner .doctor text {
+  font-size: 22rpx;
+  margin-left: 23rpx;
+}
+
+.trailer .banner .doctor .name {
+  margin-left: 63rpx;
+}
+
+.trailer .img {
+  width: 160rpx;
+  height: 120rpx;
+  border-radius: 10rpx;
+  overflow: hidden;
+}
+
+.trailer .img image {
+  width: 160rpx;
+  height: 120rpx;
+}
+
+.trailer_item .trailer_inf {
+  display: flex;
+  justify-content: space-between;
+  /* line-height: 24rpx;
+  height: 24rpx; */
+  margin-top: 10rpx;
+  font-size: 22rpx;
+  color: #999;
+}
+
+.trailer_inf .trailer image {
+  width: 24rpx;
+  height: 24rpx;
+  margin-right: 23rpx;
+}
+
+.trailer_inf .trailer .number {
+  margin-left: 20rpx;
+  font-size: 22rpx;
+  margin-top: 6rpx;
+}
+
+.trailer_inf .start {
+  max-width: 300rpx;
+}
+
+.trailer_inf .start text {
+  color: #D93639;
+  border: 2rpx solid #E2E2E2;
+  padding: 4rpx;
+  border-radius: 20rpx;
+}
+
+.trailer_wrap {
+  display: flex;
+}
+
+.trailer_image {
+  width: 140rpx;
+  height: 186rpx;
+  /* border-radius: 10rpx; */
+  margin-right: 30rpx;
+}
+
+.trailer_image image {
+  width: 140rpx;
+  height: 186rpx;
+  border-radius: 10rpx;
+}
+
+.trailer_info text {
+  display: block;
+}
+
+.trailer_info_title {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 30rpx;
+}
+
+.trailer_info {
+  width: 550rpx;
+}
+
+.trailer_info_hospital {
+  font-size: 24rpx;
+  color: #666666;
+  margin-top: 10rpx;
+}
+
+.doctor_info {
+  display: flex;
+}
+
+.doctor_info text {
+  display: inline-block;
+  font-size: 24rpx;
+  color: #666666;
+  /* margin-top: 20rpx; */
+}
+
+.doctor_info_name {
+  margin-right: 22rpx;
+}
+
+.isSignUp {
+  border: 2rpx solid #D93639;
+  border-radius: 26rpx;
+  height: 52rpx;
+  /* width: 166rpx; */
+  line-height: 52rpx;
+  padding: 0 20rpx;
+  overflow-x: hidden;
+  font-size: 28rpx;
+  text-align: center;
+  margin-top: -20rpx;
+}
+
+.notSign {
+  color: #D93639;
+}
+
+.hasSign {
+  border: 2rpx solid #cccccc;
+}

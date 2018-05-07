@@ -1,0 +1,35 @@
+<view class='container'>
+  <view class='prompt-middle' wx:if="{{state == 'noCreate'}}">
+    <view class='middle'>
+      <view class='box'>
+        <image src='../../../images/box.png' mode="widthFix"></image>
+      </view>
+      <view class='hot'>暂未开通直播间</view>
+      <view class='main'>
+        <view>请在医生站APP-“我的”-“我要直播”申请开通</view>
+      </view>
+    </view>
+  </view>
+  <view class='prompt-middle' wx:elif="{{state == 'doing'}}">
+    <view class='middle'>
+      <view class='box'>
+        <image src='../../../images/box.png' mode="widthFix"></image>
+      </view>
+      <view class='hot'>直播间审核中</view>
+      <view class='main'>
+        <view>请在医生站APP-“我的”-“我要直播”查看申请结果</view>
+      </view>
+    </view>
+  </view>
+  <view class='prompt-middle' wx:else="{{state == 'nohave'}}">
+    <view class='middle'>
+      <view class='box'>
+        <image src='../../../images/box.png' mode="widthFix"></image>
+      </view>
+      <view class='hot'>抱歉,小程序暂不支持直播功能</view>
+      <view class='main'>
+        <view>请在医生站APP-“我的”-“我要直播”进行直播</view>
+      </view>
+    </view>
+  </view>
+</view>
